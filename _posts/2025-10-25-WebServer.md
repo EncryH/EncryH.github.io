@@ -83,3 +83,12 @@ ALTERUSER'root'@'localhost'
 IDENTIFIED VIA mysql_native_password
 USING PASSWORD('새비밀번호');
 ```
+
+[적용됐는지 확인 후 나가기]
+![적용됐는지 확인 후 나가기](/image/2025-10-25-WebServer/적용됐는지 확인 후 나가기.png)
+
+[권한 설정 변경]
+![권한 설정 변경](/image/2025-10-25-WebServer/권한 설정 변경.png)
+
+## 2. 다시 웹 브라우저로 돌아가 주소 창에 실습 서버 IP주소/board/를 입력했을 때 다음과 같은 화면이 나온다면 실습을 위한 준비 완료
+![준비완료사진](/image/2025-10-25-WebServer/준비완료사진.png)
