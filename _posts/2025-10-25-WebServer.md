@@ -49,5 +49,37 @@ author_profile: false
 
 ![웹 브라우저로 실습 서버 IP 접속 여부 확인](/image/2025-10-25-WebServer/웹 브라우저로 실습 서버 IP 접속 여부 확인.png)
 
+# 웹 해킹 실습을 위한 예제 설치하기
+웹 서버를 구축했으니 이제 웹 해킹 실습을 위한 예제를 설치할 것이다.
 
+## 우분투
+## 1. 예제 설치
+![예제 다운로드](/image/2025-10-25-WebServer/예제 다운로드.png)
 
+[예제 다운로드]
+![예제다운다운](/image/2025-10-25-WebServer/예제다운다운.png)
+
+[압축 해제]
+![압축 해제](/image/2025-10-25-WebServer/압축 해제.png)
+
+[예제 경로로 이동]
+![예제 경로로 이동](/image/2025-10-25-WebServer/예제 경로로 이동.png)
+
+[데이터베이스에 실습 데이터 복원]
+![데이터베이스에 실습 데이터 복원](/image/2025-10-25-WebServer/데이터베이스에 실습 데이터 복원.png)
+
+[MariaDB 설치 후 root 로그인 방식 변경]
+![MariaDB 설치 후 root 로그인 방식 변경](/image/2025-10-25-WebServer/MariaDB 설치 후 root 로그인 방식 변경.png)
+
+**MariaDB 10.4 이상부터는 `mysql.user`가 “테이블이 아니라 VIEW”이다.**
+
+## **✅ 올바른 해결 방법 (정석)**
+
+### **1️⃣ `ALTER USER` 사용해야 함**
+
+MariaDB / MySQL 최신 버전에서는 **무조건 이 방식** 👇
+```c
+ALTERUSER'root'@'localhost'
+IDENTIFIED VIA mysql_native_password
+USING PASSWORD('새비밀번호');
+```
