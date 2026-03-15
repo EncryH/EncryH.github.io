@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[자료구조] 선형 리스트 원소 삽입 "
+title: "[자료구조] 선형 리스트 원소 삽입"
 categories: C
 tag: [C, 자료구조]
 toc: true
