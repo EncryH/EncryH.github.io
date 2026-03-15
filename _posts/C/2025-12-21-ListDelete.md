@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "[자료구조] 선형 리스트 원소 삭제"
-categories: 자료구조
-tag: [C, 자료구조]
+title: "[Data structure] 선형 리스트 원소 삭제"
+categories: Data structure
+tag: [C, Data structure]
 toc: true
 toc_label: 목차
 author_profile: false
