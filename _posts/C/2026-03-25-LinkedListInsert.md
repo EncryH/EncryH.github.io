@@ -40,47 +40,45 @@ typedef struct List {
 - `List`는 연결 리스트의 시작 주소인 `head`와 전체 노드 개수인 `node_cnt`를 저장한다.
 
 # 3. 초기화와 노드 생성
-리스트를 사용하기 전에 반드시 초기화해야 하며, 노드는 동적 할당을 통해 생성한다.
+리스트를 사용하기 전에 반드시 초기화해야 하며, 노드는 동적 할당을 통해 생성한다. 아래 코드는 과제에서 사용한 원본 코드 그대로이다.
 
 ```c
+// 초기화
 void list_init(List* list) {
-    list->head = NULL;
-    list->node_cnt = 0;
+	list->head = NULL;
+	list->node_cnt = 0;
 }
 
 Node* createNode(void) {
-    int num = rand() % 100;
-    Node* new_node = (Node*)malloc(sizeof(Node));
+	int num = 0;
+	num = rand() % 100;
+	Node* New_node = (Node*)malloc(sizeof(Node));
+	New_node->val = num;
+	New_node->next = NULL;
 
-    if (new_node == NULL) {
-        return NULL;
-    }
-
-    new_node->val = num;
-    new_node->next = NULL;
-    return new_node;
+	return New_node;
 }
 ```
 
-이 구현에서는 `rand()`를 이용해 0부터 99 사이의 정수를 만들고, 이를 새 노드의 값으로 저장했다. 실습 단계에서는 랜덤 값을 사용했지만, 실제 프로그램에서는 사용자 입력이나 파일 데이터로 대체할 수 있다.
+이 구현에서는 `rand()`를 이용해 0부터 99 사이의 정수를 만들고, 이를 새 노드의 값으로 저장했다.
 
 # 4. 리스트 출력
 삽입 결과가 잘 반영되는지 확인하기 위해 리스트 전체를 순회하며 출력하는 함수를 사용했다.
 
 ```c
 void list_print(List* list) {
-    if (list == NULL) {
-        printf("list is not exist!\n");
-        return;
-    }
+	if (list == NULL) {
+		printf("list is not exist!\n");
+		return;
+	}
 
-    Node* tmp = list->head;
+	Node* tmp = list->head;
 
-    while (tmp != NULL) {
-        printf("%2d - ", tmp->val);
-        tmp = tmp->next;
-    }
-    printf("\n");
+	while (tmp != NULL) {
+		printf("%2d - ", tmp->val);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
 ```
 
@@ -92,15 +90,16 @@ void list_print(List* list) {
 
 ```c
 int list_append_first(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* New_node;
+	//New_node = (Node*)malloc(sizeof(Node));
+	// New_node->val = list;
 
-    node->next = list->head;
-    list->head = node;
-    list->node_cnt++;
+	node->next = list->head;
+	list->head = node;
 
-    return list->node_cnt;
+	// 카운트
+	list->node_cnt++;
+	return list->node_cnt;
 }
 ```
 
@@ -111,57 +110,55 @@ int list_append_first(List* list, Node* node) {
 
 ```c
 int list_append_last(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* tmp;
+	tmp = list->head;
 
-    if (list->head == NULL) {
-        list->head = node;
-    } else {
-        Node* tmp = list->head;
+	if (list->head == NULL) {
+		node->next = NULL;
+		list->head = node;
+		list->node_cnt++;
+		return list->node_cnt;
+	}
+	else {
+		tmp = list->head;
 
-        while (tmp->next != NULL) {
-            tmp = tmp->next;
-        }
+		while (tmp->next != NULL) {
+			tmp = tmp->next;
+			list->node_cnt++;
+		}
+		node->next = NULL;
+		tmp->next = node;
+	}
 
-        tmp->next = node;
-    }
-
-    node->next = NULL;
-    list->node_cnt++;
-    return list->node_cnt;
+	return list->node_cnt;
 }
 ```
 
 리스트가 비어 있지 않은 경우 마지막 노드를 찾기 위해 전체를 순회해야 하므로 시간 복잡도는 `O(n)`이다.
-
-실습 코드에서 주의할 점은 `node_cnt` 증가 위치이다. 마지막 노드를 찾는 반복문 안에서 카운트를 증가시키면 실제 노드 개수와 다른 값이 저장될 수 있으므로, 삽입이 완료된 뒤 한 번만 증가시키는 방식으로 정리하는 것이 안전하다.
 
 ## 5-3. 오름차순 유지 삽입
 정렬된 상태를 유지하면서 삽입하려면 새 노드가 들어갈 위치를 찾아야 한다.
 
 ```c
 int list_append_ordered(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* tmp;
+	tmp = list->head;
 
-    Node* tmp = list->head;
+	if (!tmp || node->val < tmp->val) {
+		node->next = tmp;
+		list->head = node;
+	}
+	else {
+		while (tmp->next && tmp->next->val < node->val)
+			tmp = tmp->next;
 
-    if (tmp == NULL || node->val < tmp->val) {
-        node->next = tmp;
-        list->head = node;
-    } else {
-        while (tmp->next != NULL && tmp->next->val < node->val) {
-            tmp = tmp->next;
-        }
+		node->next = tmp->next;
+		tmp->next = node;
 
-        node->next = tmp->next;
-        tmp->next = node;
-    }
-
-    list->node_cnt++;
-    return list->node_cnt;
+	}
+	list->node_cnt++;
+	
+	return list->node_cnt;
 }
 ```
 
@@ -173,137 +170,137 @@ int list_append_ordered(List* list, Node* node) {
 두 번째 경우에는 `tmp->next->val`과 새 노드 값을 비교하면서 삽입 지점을 찾는다. 위치를 찾은 뒤에는 포인터 두 개만 변경하면 되므로 연결 자체는 간단하지만, 위치 탐색 때문에 시간 복잡도는 `O(n)`이다.
 
 # 6. 전체 코드
-아래는 위 내용을 반영해 정리한 전체 코드이다.
+아래는 과제에서 사용한 원본 코드 전체이다.
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <time.h>
 
+// 구조체 정의
 typedef struct Node {
-    int val;
-    struct Node* next;
+	int val;
+	struct Node* next;
 } Node;
 
 typedef struct List {
-    Node* head;
-    int node_cnt;
+	Node* head;
+	int node_cnt;
 } List;
 
+// 초기화
 void list_init(List* list) {
-    list->head = NULL;
-    list->node_cnt = 0;
+	list->head = NULL;
+	list->node_cnt = 0;
 }
 
 Node* createNode(void) {
-    int num = rand() % 100;
-    Node* new_node = (Node*)malloc(sizeof(Node));
+	int num = 0;
+	num = rand() % 100;
+	Node* New_node = (Node*)malloc(sizeof(Node));
+	New_node->val = num;
+	New_node->next = NULL;
 
-    if (new_node == NULL) {
-        return NULL;
-    }
-
-    new_node->val = num;
-    new_node->next = NULL;
-    return new_node;
+	return New_node;
 }
 
 void list_print(List* list) {
-    if (list == NULL) {
-        printf("list is not exist!\n");
-        return;
-    }
+	if (list == NULL) {
+		printf("list is not exist!\n");
+		return;
+	}
 
-    Node* tmp = list->head;
+	Node* tmp = list->head;
 
-    while (tmp != NULL) {
-        printf("%2d - ", tmp->val);
-        tmp = tmp->next;
-    }
-    printf("\n");
+	while (tmp != NULL) {
+		printf("%2d - ", tmp->val);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
 
+// 첫 지점 삽입
 int list_append_first(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* New_node;
+	//New_node = (Node*)malloc(sizeof(Node));
+	// New_node->val = list;
 
-    node->next = list->head;
-    list->head = node;
-    list->node_cnt++;
-    return list->node_cnt;
+	node->next = list->head;
+	list->head = node;
+
+	// 카운트
+	list->node_cnt++;
+	return list->node_cnt;
 }
 
+// 마지막 지점 삽입
 int list_append_last(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* tmp;
+	tmp = list->head;
 
-    if (list->head == NULL) {
-        list->head = node;
-    } else {
-        Node* tmp = list->head;
+	if (list->head == NULL) {
+		node->next = NULL;
+		list->head = node;
+		list->node_cnt++;
+		return list->node_cnt;
+	}
+	else {
+		tmp = list->head;
 
-        while (tmp->next != NULL) {
-            tmp = tmp->next;
-        }
+		while (tmp->next != NULL) {
+			tmp = tmp->next;
+			list->node_cnt++;
+		}
+		node->next = NULL;
+		tmp->next = node;
+	}
 
-        tmp->next = node;
-    }
-
-    node->next = NULL;
-    list->node_cnt++;
-    return list->node_cnt;
+	return list->node_cnt;
 }
 
+// 오름차순을 유지한 상태로 새로운 노드 값을 삽입
 int list_append_ordered(List* list, Node* node) {
-    if (list == NULL || node == NULL) {
-        return -1;
-    }
+	Node* tmp;
+	tmp = list->head;
 
-    Node* tmp = list->head;
+	if (!tmp || node->val < tmp->val) {
+		node->next = tmp;
+		list->head = node;
+	}
+	else {
+		while (tmp->next && tmp->next->val < node->val)
+			tmp = tmp->next;
 
-    if (tmp == NULL || node->val < tmp->val) {
-        node->next = tmp;
-        list->head = node;
-    } else {
-        while (tmp->next != NULL && tmp->next->val < node->val) {
-            tmp = tmp->next;
-        }
+		node->next = tmp->next;
+		tmp->next = node;
 
-        node->next = tmp->next;
-        tmp->next = node;
-    }
-
-    list->node_cnt++;
-    return list->node_cnt;
+	}
+	list->node_cnt++;
+	
+	return list->node_cnt;
 }
 
-int main(void) {
-    int i;
+int main() {
+	int i = 0;
 
-    srand((unsigned int)time(NULL));
+	srand(time(NULL));
 
-    List list;
-    list_init(&list);
+	List list;
+	list_init(&list);
 
-    for (i = 0; i < 10; i++) {
-        Node* node = createNode();
-        int ret;
+	for (i = 0; i < 10; i++) {
+		Node* node = createNode();
 
-        if (node == NULL) {
-            printf("memory allocation failed\n");
-            return 1;
-        }
+		int ret = list_append_ordered(&list, node);
+		
+		printf("val : %d, ret : %d\n", node->val, ret);
+		
 
-        ret = list_append_ordered(&list, node);
-
-        printf("val : %d, ret : %d\n", node->val, ret);
-        list_print(&list);
-    }
-
-    return 0;
+		list_print(&list);
+	}
+	return 0;
 }
 ```
 
