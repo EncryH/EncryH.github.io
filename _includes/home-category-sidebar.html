@@ -5,6 +5,68 @@
   {% endif %}
 {% endfor %}
 
+<style>
+  .home-category-nav {
+    margin: 1.5em 0 2em;
+    padding: 1em 0 0;
+    font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .home-category-nav__title {
+    margin: 0 0 0.75em;
+    font-size: 1.25em;
+    color: #d5d8df;
+  }
+
+  .home-category-nav__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-category-nav__item a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 0.45em 0;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .home-category-nav__item a:hover {
+    color: #7ab7bd;
+  }
+
+  .home-category-nav__count {
+    color: #b7bec9;
+  }
+
+  @media (min-width: 1024px) {
+    .layout--home .archive {
+      position: relative;
+    }
+
+    .layout--home .home-category-nav {
+      position: absolute;
+      top: 3.25em;
+      right: 0;
+      width: 185px;
+      margin: 0;
+      padding: 0 0 0 1em;
+      border-top: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .layout--home .home-category-nav {
+      width: 285px;
+    }
+  }
+</style>
+
 <aside class="home-category-nav" aria-label="Category navigation">
   <h2 class="home-category-nav__title">Category</h2>
   <ul class="home-category-nav__list">
