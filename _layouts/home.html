@@ -4,21 +4,31 @@ layout: archive
 
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+{% assign recent_posts_label = site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" %}
+<h3 class="archive__subtitle" data-home-posts-title data-default-title="{{ recent_posts_label }}">{{ recent_posts_label }}</h3>
 
 {% if page.home_category_sidebar %}
   {% include home-category-sidebar.html %}
 {% endif %}
 
-{% if paginator %}
+{% if page.home_category_sidebar %}
+  {% assign posts = site.posts %}
+{% elsif paginator %}
   {% assign posts = paginator.posts %}
 {% else %}
   {% assign posts = site.posts %}
 {% endif %}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
+<div class="entries-{{ entries_layout }}" data-home-posts data-default-limit="{{ site.paginate | default: 5 }}">
   {% include documents-collection.html entries=posts type=entries_layout %}
 </div>
 
-{% include paginator.html %}
+{% if page.home_category_sidebar %}
+  <p class="home-category-empty" data-home-category-empty hidden>선택한 카테고리의 글이 없습니다.</p>
+  {% include home-category-filter.html %}
+{% endif %}
+
+{% unless page.home_category_sidebar %}
+  {% include paginator.html %}
+{% endunless %}

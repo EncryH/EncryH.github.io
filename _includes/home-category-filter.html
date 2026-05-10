@@ -1,0 +1,77 @@
+<script>
+  (function () {
+    var postsContainer = document.querySelector("[data-home-posts]");
+    var title = document.querySelector("[data-home-posts-title]");
+    var links = Array.prototype.slice.call(document.querySelectorAll("[data-home-category-link]"));
+    var emptyMessage = document.querySelector("[data-home-category-empty]");
+
+    if (!postsContainer || !title || !links.length) {
+      return;
+    }
+
+    var posts = Array.prototype.slice.call(postsContainer.querySelectorAll("[data-home-post]"));
+    var defaultTitle = title.getAttribute("data-default-title") || title.textContent;
+    var defaultLimit = parseInt(postsContainer.getAttribute("data-default-limit"), 10) || 5;
+
+    function getCategoryFromUrl() {
+      return new URLSearchParams(window.location.search).get("category");
+    }
+
+    function setCategoryInUrl(category) {
+      var url = new URL(window.location.href);
+
+      if (category) {
+        url.searchParams.set("category", category);
+      } else {
+        url.searchParams.delete("category");
+      }
+
+      window.history.pushState({ category: category }, "", url);
+    }
+
+    function applyCategory(category) {
+      var selectedLink = links.find(function (link) {
+        return link.getAttribute("data-category") === category;
+      });
+      var selectedName = selectedLink ? selectedLink.getAttribute("data-category-name") : "";
+      var visibleCount = 0;
+
+      title.textContent = selectedName || defaultTitle;
+
+      posts.forEach(function (post, index) {
+        var categories = (post.getAttribute("data-categories") || "").split(/\s+/);
+        var shouldShow = selectedLink ? categories.indexOf(category) !== -1 : index < defaultLimit;
+
+        post.hidden = !shouldShow;
+
+        if (shouldShow) {
+          visibleCount += 1;
+        }
+      });
+
+      links.forEach(function (link) {
+        link.classList.toggle("is-active", link === selectedLink);
+      });
+
+      if (emptyMessage) {
+        emptyMessage.hidden = visibleCount !== 0;
+      }
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        var category = link.getAttribute("data-category");
+
+        setCategoryInUrl(category);
+        applyCategory(category);
+      });
+    });
+
+    window.addEventListener("popstate", function () {
+      applyCategory(getCategoryFromUrl());
+    });
+
+    applyCategory(getCategoryFromUrl());
+  })();
+</script>

@@ -42,8 +42,19 @@
     color: #7ab7bd;
   }
 
+  .home-category-nav__item a.is-active {
+    color: #7ab7bd;
+    font-weight: 700;
+  }
+
   .home-category-nav__count {
     color: #b7bec9;
+  }
+
+  .home-category-empty {
+    margin-top: 2em;
+    color: #b7bec9;
+    font-size: 0.85em;
   }
 
   @media (min-width: 1024px) {
@@ -77,7 +88,7 @@
         {% if category[1].size == i %}
           {% assign category_name = category[0] %}
           <li class="home-category-nav__item">
-            <a href="{{ '/categories/' | relative_url }}#{{ category_name | slugify }}">
+            <a href="{{ '/' | relative_url }}?category={{ category_name | slugify }}" data-home-category-link data-category="{{ category_name | slugify }}" data-category-name="{{ category_name }}">
               <span>{{ category_name }}</span>
               <span class="home-category-nav__count">{{ i }}</span>
             </a>
