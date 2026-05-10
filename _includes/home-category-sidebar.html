@@ -1,0 +1,25 @@
+{% assign categories_max = 0 %}
+{% for category in site.categories %}
+  {% if category[1].size > categories_max %}
+    {% assign categories_max = category[1].size %}
+  {% endif %}
+{% endfor %}
+
+<aside class="home-category-nav" aria-label="Category navigation">
+  <h2 class="home-category-nav__title">Category</h2>
+  <ul class="home-category-nav__list">
+    {% for i in (1..categories_max) reversed %}
+      {% for category in site.categories %}
+        {% if category[1].size == i %}
+          {% assign category_name = category[0] %}
+          <li class="home-category-nav__item">
+            <a href="{{ '/categories/' | relative_url }}#{{ category_name | slugify }}">
+              <span>{{ category_name }}</span>
+              <span class="home-category-nav__count">{{ i }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</aside>
