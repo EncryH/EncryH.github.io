@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Portfolio] 대흥 현장 업무 - 이랜텍 배터리 공장 CIM 세팅 경험"
+title: "[Portfolio] 배터리 제조 현장 CIM 세팅 경험"
 categories: Portfolio
 tag: [Portfolio, CIM, MES, PLC, Factory System, Field Experience]
 toc: true
@@ -10,7 +10,7 @@ author_profile: false
 
 # 1. 참여 배경
 
-2025년 9월, 약 한 달 동안 이랜텍 배터리 제조 공장의 컴퓨터 시스템 세팅 업무에 참여했다.
+2025년 9월, 약 한 달 동안 배터리 제조 현장의 컴퓨터 시스템 세팅 업무에 참여했다.
 
 업무 자체는 복잡한 개발 프로젝트라기보다는 현장 PC에 프로그램을 설치하고, PLC와 통신이 되도록 설정하고, 공정 데이터와 파일을 맞춰 넣는 세팅 작업에 가까웠다. 하지만 제조 현장에서 실제로 쓰이는 시스템을 직접 보고 싶었다.
 
