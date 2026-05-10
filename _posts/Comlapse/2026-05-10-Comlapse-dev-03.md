@@ -16,6 +16,10 @@ author_profile: false
 
 그래서 대시보드에 `Screen`, `Mic` 기록 장치 토글을 추가했다.
 
+![Comlapse 기록 장치가 포함된 대시보드](/image/2026-05-10-Comlapse-dev-03/dashboard.png)
+
+이 화면에서 왼쪽은 공부 모드와 메뉴, 가운데는 활동 타임라인, 오른쪽은 AI 질의응답, 하단은 기록 장치와 실시간 녹음 내용으로 나뉜다. 공부 기록 앱이기 때문에 첫 화면에서 "지금 기록 중인지"와 "어떤 장치가 켜져 있는지"가 바로 보여야 한다고 생각했다.
+
 ```jsx
 const [captureOptions, setCaptureOptions] = useState({
   screen: true,
