@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[현장 경험] 배터리 제조 CIM 세팅 경험"
+title: "[Field Note] Battery Manufacturing CIM Setup Experience"
 categories: Portfolio
 tag: [Portfolio, CIM, MES, PLC, Factory System, Field Experience]
 toc: true
