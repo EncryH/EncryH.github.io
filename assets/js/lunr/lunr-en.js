@@ -23,10 +23,64 @@ var idx = lunr(function () {
 });
 
 $(document).ready(function() {
-  $('input#search').on('keyup', function () {
+  function normalize(value) {
+    return (value || '').toString().toLowerCase();
+  }
+
+  function includesQuery(item, query) {
+    if (!query) {
+      return false;
+    }
+
+    var searchableText = [
+      item.title,
+      item.excerpt,
+      (item.categories || []).join(' '),
+      (item.tags || []).join(' ')
+    ].map(normalize).join(' ');
+
+    return searchableText.indexOf(query) !== -1;
+  }
+
+  function buildSearchItem(item) {
+    var excerpt = item.excerpt ? item.excerpt.split(" ").splice(0,20).join(" ") + '...' : '';
+
+    if(item.teaser){
+      return '<div class="list__item">'+
+        '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+          '<h2 class="archive__item-title" itemprop="headline">'+
+            '<a href="'+item.url+'" rel="permalink">'+item.title+'</a>'+
+          '</h2>'+
+          '<div class="archive__item-teaser">'+
+            '<img src="'+item.teaser+'" alt="">'+
+          '</div>'+
+          '<p class="archive__item-excerpt" itemprop="description">'+excerpt+'</p>'+
+        '</article>'+
+      '</div>';
+    }
+
+    return '<div class="list__item">'+
+      '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+        '<h2 class="archive__item-title" itemprop="headline">'+
+          '<a href="'+item.url+'" rel="permalink">'+item.title+'</a>'+
+        '</h2>'+
+        '<p class="archive__item-excerpt" itemprop="description">'+excerpt+'</p>'+
+      '</article>'+
+    '</div>';
+  }
+
+  function searchPosts() {
     var resultdiv = $('#results');
-    var query = $(this).val().toLowerCase();
-    var result =
+    var query = normalize($('input#search').val()).trim();
+    var result = [];
+    var seen = {};
+
+    if (!query) {
+      resultdiv.empty();
+      return;
+    }
+
+    result =
       idx.query(function (q) {
         query.split(lunr.tokenizer.separator).forEach(function (term) {
           q.term(term, { boost: 100 })
@@ -38,36 +92,37 @@ $(document).ready(function() {
           }
         })
       });
+
+    result.forEach(function (item) {
+      seen[item.ref] = true;
+    });
+
+    store.forEach(function (item, index) {
+      if (!seen[index] && includesQuery(item, query)) {
+        result.push({ ref: index.toString(), score: 0 });
+        seen[index] = true;
+      }
+    });
+
     resultdiv.empty();
     resultdiv.prepend('<p class="results__found">'+result.length+' {{ site.data.ui-text[site.locale].results_found | default: "Result(s) found" }}</p>');
     for (var item in result) {
       var ref = result[item].ref;
-      if(store[ref].teaser){
-        var searchitem =
-          '<div class="list__item">'+
-            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
-              '<h2 class="archive__item-title" itemprop="headline">'+
-                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
-              '</h2>'+
-              '<div class="archive__item-teaser">'+
-                '<img src="'+store[ref].teaser+'" alt="">'+
-              '</div>'+
-              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
-            '</article>'+
-          '</div>';
-      }
-      else{
-    	  var searchitem =
-          '<div class="list__item">'+
-            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
-              '<h2 class="archive__item-title" itemprop="headline">'+
-                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
-              '</h2>'+
-              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
-            '</article>'+
-          '</div>';
-      }
-      resultdiv.append(searchitem);
+      resultdiv.append(buildSearchItem(store[ref]));
     }
-  });
+
+    if (window.history.replaceState) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('q', query);
+      window.history.replaceState({}, '', url);
+    }
+  }
+
+  $('input#search').on('input keyup', searchPosts);
+
+  var initialQuery = new URLSearchParams(window.location.search).get('q');
+  if (initialQuery) {
+    $('input#search').val(initialQuery);
+    searchPosts();
+  }
 });

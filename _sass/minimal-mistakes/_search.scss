@@ -9,7 +9,11 @@
 }
 
 .search__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   margin-inline: 1rem;
+  padding-inline: 0.5rem;
   height: $nav-toggle-height;
   border: 0;
   outline: none;
@@ -21,6 +25,13 @@
 
   &:hover {
     color: mix(#000, $primary-color, 25%);
+  }
+
+  &-label {
+    font-family: $sans-serif-narrow;
+    font-size: $type-size-6;
+    font-weight: 700;
+    line-height: 1;
   }
 }
 
