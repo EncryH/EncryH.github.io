@@ -4,6 +4,7 @@
     var title = document.querySelector("[data-home-posts-title]");
     var links = Array.prototype.slice.call(document.querySelectorAll("[data-home-category-link]"));
     var emptyMessage = document.querySelector("[data-home-category-empty]");
+    var pagination = document.querySelector("[data-home-pagination]");
 
     if (!postsContainer || !title || !links.length) {
       return;
@@ -12,12 +13,20 @@
     var posts = Array.prototype.slice.call(postsContainer.querySelectorAll("[data-home-post]"));
     var defaultTitle = title.getAttribute("data-default-title") || title.textContent;
     var defaultLimit = parseInt(postsContainer.getAttribute("data-default-limit"), 10) || 5;
+    var currentCategory = "";
+    var currentPage = 1;
 
     function getCategoryFromUrl() {
       return new URLSearchParams(window.location.search).get("category");
     }
 
-    function setCategoryInUrl(category) {
+    function getPageFromUrl() {
+      var page = parseInt(new URLSearchParams(window.location.search).get("page"), 10);
+
+      return page > 1 ? page : 1;
+    }
+
+    function setStateInUrl(category, page) {
       var url = new URL(window.location.href);
 
       if (category) {
@@ -26,27 +35,102 @@
         url.searchParams.delete("category");
       }
 
-      window.history.pushState({ category: category }, "", url);
+      if (page > 1) {
+        url.searchParams.set("page", page);
+      } else {
+        url.searchParams.delete("page");
+      }
+
+      window.history.pushState({ category: category, page: page }, "", url);
     }
 
-    function applyCategory(category) {
+    function getFilteredPosts(selectedLink, category) {
+      if (!selectedLink) {
+        return posts;
+      }
+
+      return posts.filter(function (post) {
+        var categories = (post.getAttribute("data-categories") || "").split(/\s+/);
+
+        return categories.indexOf(category) !== -1;
+      });
+    }
+
+    function createPageLink(label, page, classes) {
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+
+      link.href = "#";
+      link.textContent = label;
+
+      if (classes) {
+        link.className = classes;
+      }
+
+      if (classes && classes.indexOf("disabled") !== -1) {
+        link.setAttribute("aria-disabled", "true");
+      } else {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          setStateInUrl(currentCategory, page);
+          applyCategory(currentCategory, page);
+        });
+      }
+
+      item.appendChild(link);
+
+      return item;
+    }
+
+    function renderPagination(totalPages) {
+      if (!pagination) {
+        return;
+      }
+
+      pagination.innerHTML = "";
+
+      if (totalPages <= 1) {
+        pagination.hidden = true;
+        return;
+      }
+
+      pagination.hidden = false;
+
+      var list = document.createElement("ul");
+      var previousClass = currentPage === 1 ? "disabled" : "";
+      var nextClass = currentPage === totalPages ? "disabled" : "";
+
+      list.appendChild(createPageLink("{{ site.data.ui-text[site.locale].pagination_previous | default: 'Previous' }}", currentPage - 1, previousClass));
+
+      for (var page = 1; page <= totalPages; page += 1) {
+        list.appendChild(createPageLink(String(page), page, page === currentPage ? "disabled current" : ""));
+      }
+
+      list.appendChild(createPageLink("{{ site.data.ui-text[site.locale].pagination_next | default: 'Next' }}", currentPage + 1, nextClass));
+      pagination.appendChild(list);
+    }
+
+    function applyCategory(category, page) {
       var selectedLink = links.find(function (link) {
         return link.getAttribute("data-category") === category;
       });
       var selectedName = selectedLink ? selectedLink.getAttribute("data-category-name") : "";
-      var visibleCount = 0;
+      var filteredPosts = getFilteredPosts(selectedLink, category);
+      var totalPages = Math.ceil(filteredPosts.length / defaultLimit);
+      var startIndex;
+      var endIndex;
 
+      currentCategory = selectedLink ? category : "";
+      currentPage = Math.min(Math.max(page || 1, 1), Math.max(totalPages, 1));
+      startIndex = (currentPage - 1) * defaultLimit;
+      endIndex = startIndex + defaultLimit;
       title.textContent = selectedName || defaultTitle;
 
-      posts.forEach(function (post, index) {
-        var categories = (post.getAttribute("data-categories") || "").split(/\s+/);
-        var shouldShow = selectedLink ? categories.indexOf(category) !== -1 : index < defaultLimit;
+      posts.forEach(function (post) {
+        var filteredIndex = filteredPosts.indexOf(post);
+        var shouldShow = filteredIndex >= startIndex && filteredIndex < endIndex;
 
         post.hidden = !shouldShow;
-
-        if (shouldShow) {
-          visibleCount += 1;
-        }
       });
 
       links.forEach(function (link) {
@@ -54,8 +138,10 @@
       });
 
       if (emptyMessage) {
-        emptyMessage.hidden = visibleCount !== 0;
+        emptyMessage.hidden = filteredPosts.length !== 0;
       }
+
+      renderPagination(totalPages);
     }
 
     links.forEach(function (link) {
@@ -63,15 +149,15 @@
         event.preventDefault();
         var category = link.getAttribute("data-category");
 
-        setCategoryInUrl(category);
-        applyCategory(category);
+        setStateInUrl(category, 1);
+        applyCategory(category, 1);
       });
     });
 
     window.addEventListener("popstate", function () {
-      applyCategory(getCategoryFromUrl());
+      applyCategory(getCategoryFromUrl(), getPageFromUrl());
     });
 
-    applyCategory(getCategoryFromUrl());
+    applyCategory(getCategoryFromUrl(), getPageFromUrl());
   })();
 </script>
