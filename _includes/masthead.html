@@ -23,11 +23,14 @@
           {%- endfor -%}
         </ul>
         {% if site.search == true %}
-        <button class="search__toggle" type="button" aria-label="{{ site.data.ui-text[site.locale].search_label | default: '검색' }}" title="{{ site.data.ui-text[site.locale].search_label | default: '검색' }}">
-          <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>
-          <i class="fas fa-search"></i>
-          <span class="search__toggle-label">검색</span>
-        </button>
+        <form class="masthead-search" role="search" autocomplete="off">
+          <label class="visually-hidden" for="masthead-search-input">게시글 검색</label>
+          <input id="masthead-search-input" class="masthead-search__input" type="search" placeholder="어떤 글을 찾으세요?" aria-controls="masthead-search-results" aria-expanded="false">
+          <button class="masthead-search__button" type="submit" aria-label="검색">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="masthead-search-results" class="masthead-search__results" hidden></div>
+        </form>
         {% endif %}
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>

@@ -27,6 +27,15 @@ $(document).ready(function() {
     return (value || '').toString().toLowerCase();
   }
 
+  function escapeHtml(value) {
+    return (value || '').toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function includesQuery(item, query) {
     if (!query) {
       return false;
@@ -40,6 +49,41 @@ $(document).ready(function() {
     ].map(normalize).join(' ');
 
     return searchableText.indexOf(query) !== -1;
+  }
+
+  function getResults(query) {
+    var result = [];
+    var seen = {};
+
+    if (!query) {
+      return result;
+    }
+
+    result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+    result.forEach(function (item) {
+      seen[item.ref] = true;
+    });
+
+    store.forEach(function (item, index) {
+      if (!seen[index] && includesQuery(item, query)) {
+        result.push({ ref: index.toString(), score: 0 });
+        seen[index] = true;
+      }
+    });
+
+    return result;
   }
 
   function buildSearchItem(item) {
@@ -69,40 +113,50 @@ $(document).ready(function() {
     '</div>';
   }
 
+  function buildMastheadSearchItem(item) {
+    var meta = (item.categories || []).concat(item.tags || []).slice(0, 3).join(' · ');
+
+    return '<a class="masthead-search__result" href="'+item.url+'">'+
+      '<span class="masthead-search__result-title">'+escapeHtml(item.title)+'</span>'+
+      (meta ? '<span class="masthead-search__result-meta">'+escapeHtml(meta)+'</span>' : '')+
+    '</a>';
+  }
+
+  function renderMastheadResults(query) {
+    var results = getResults(query);
+    var resultdiv = $('#masthead-search-results');
+    var input = $('#masthead-search-input');
+
+    resultdiv.empty();
+
+    if (!query) {
+      resultdiv.prop('hidden', true);
+      input.attr('aria-expanded', 'false');
+      return results;
+    }
+
+    if (!results.length) {
+      resultdiv.append('<div class="masthead-search__empty">검색 결과가 없습니다.</div>');
+    } else {
+      results.slice(0, 6).forEach(function (item) {
+        resultdiv.append(buildMastheadSearchItem(store[item.ref]));
+      });
+    }
+
+    resultdiv.prop('hidden', false);
+    input.attr('aria-expanded', 'true');
+    return results;
+  }
+
   function searchPosts() {
     var resultdiv = $('#results');
     var query = normalize($('input#search').val()).trim();
-    var result = [];
-    var seen = {};
+    var result = getResults(query);
 
     if (!query) {
       resultdiv.empty();
       return;
     }
-
-    result =
-      idx.query(function (q) {
-        query.split(lunr.tokenizer.separator).forEach(function (term) {
-          q.term(term, { boost: 100 })
-          if(query.lastIndexOf(" ") != query.length-1){
-            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
-          }
-          if (term != ""){
-            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
-          }
-        })
-      });
-
-    result.forEach(function (item) {
-      seen[item.ref] = true;
-    });
-
-    store.forEach(function (item, index) {
-      if (!seen[index] && includesQuery(item, query)) {
-        result.push({ ref: index.toString(), score: 0 });
-        seen[index] = true;
-      }
-    });
 
     resultdiv.empty();
     resultdiv.prepend('<p class="results__found">'+result.length+' {{ site.data.ui-text[site.locale].results_found | default: "Result(s) found" }}</p>');
@@ -119,6 +173,22 @@ $(document).ready(function() {
   }
 
   $('input#search').on('input keyup', searchPosts);
+
+  $('#masthead-search-input').on('input focus', function () {
+    renderMastheadResults(normalize($(this).val()).trim());
+  });
+
+  $('.masthead-search').on('submit', function (event) {
+    event.preventDefault();
+    renderMastheadResults(normalize($('#masthead-search-input').val()).trim());
+  });
+
+  $(document).on('click', function (event) {
+    if (!$(event.target).closest('.masthead-search').length) {
+      $('#masthead-search-results').prop('hidden', true);
+      $('#masthead-search-input').attr('aria-expanded', 'false');
+    }
+  });
 
   var initialQuery = new URLSearchParams(window.location.search).get('q');
   if (initialQuery) {
