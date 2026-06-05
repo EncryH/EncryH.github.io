@@ -1,289 +1,161 @@
-# [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
+# EncryH.blog
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
-[![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.7-blue.svg)](https://jekyllrb.com/)
+보안 학습과 개발 과정을 기록하는 개인 기술 블로그입니다.
 
-Minimal Mistakes is a flexible two-column Jekyll theme, perfect for building personal sites, blogs, and portfolios. As the name implies, styling is purposely minimalistic to be enhanced and customized by you :smile:.
+Linux, 네트워크, 웹 해킹, C/Data Structure, 프로젝트 개발일지를 실습 중심으로 정리합니다. 단순히 결과만 적기보다, 어떤 문제를 만났고 어떤 방식으로 해결했는지 남기는 것을 목표로 합니다.
 
-:sparkles: See what's new in the [CHANGELOG](CHANGELOG.md).
+## Links
 
-**Note:** The theme uses the [jekyll-include-cache](https://github.com/benbalter/jekyll-include-cache) plugin which will need to be installed in your `Gemfile` and must be retained in the `plugins` array of `_config.yml`. Otherwise you'll encounter `Unknown tag 'include_cached'` errors at build.
+- Blog: <https://encryh.github.io>
+- GitHub: <https://github.com/EncryH>
+- Instagram: <https://instagram.com/h07zzm>
 
-[![Minimal Mistakes live preview][2]][1]
+## About
 
-[1]: https://mmistakes.github.io/minimal-mistakes/
-[2]: screenshot.png (live preview)
+EncryH.blog는 보안 공부와 개발 경험을 포트폴리오처럼 쌓아가는 공간입니다.
 
-![layout examples](screenshot-layouts.png)
+주요 기록 방향은 다음과 같습니다.
 
-## Notable features
+- Linux 명령어, 권한, 네트워크, 방화벽, 웹 서버 구축 실습
+- OverTheWire Bandit 기반 리눅스 워게임 풀이
+- Wireshark를 활용한 패킷 분석과 네트워크 흐름 이해
+- C언어, 포인터, 자료구조, 컴파일 과정 정리
+- 웹 해킹과 보안 실습 환경 구축
+- 개인 프로젝트 개발일지와 현장 경험 기록
 
-- Bundled as a "theme gem" for easier installation/upgrading.
-- Compatible with GitHub Pages.
-- Support for Jekyll's built-in Sass/SCSS preprocessor.
-- Nine different skins (color variations).
-- Several responsive layout options (single, archive index, search, splash, and paginated home page).
-- Optimized for search engines with support for [Twitter Cards](https://dev.twitter.com/cards/overview) and [Open Graph](http://ogp.me/) data.
-- Optional [header images](https://mmistakes.github.io/minimal-mistakes/docs/layouts/#headers), [custom sidebars](https://mmistakes.github.io/minimal-mistakes/docs/layouts/#sidebars), [table of contents](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#table-of-contents), [galleries](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#gallery), related posts, [breadcrumb links](https://mmistakes.github.io/minimal-mistakes/docs/configuration/#breadcrumb-navigation-beta), [navigation lists](https://mmistakes.github.io/minimal-mistakes/docs/helpers/#navigation-list), and more.
-- Commenting support (powered by [Disqus](https://disqus.com/), [Facebook](https://developers.facebook.com/docs/plugins/comments), Google+, [Discourse](https://www.discourse.org/), static-based via [Staticman](https://staticman.net/), [utterances](https://utteranc.es/), and [giscus](https://giscus.app/)).
-- [Google Analytics](https://www.google.com/analytics/) support.
-- UI localized text in English (default), Arabic (عربي), Brazilian Portuguese (Português brasileiro), Bulgarian, Catalan, Chinese, Czech, Danish, Dutch, Finnish, French (Français), German (Deutsch), Greek, Hebrew, Hindi (हिंदी), Hungarian, Indonesian, Irish (Gaeilge), Italian (Italiano), Japanese, Kiswahili, Korean, Malayalam, Myanmar (Burmese), Nepali (Nepalese), Norwegian (Norsk), Persian (فارسی), Polish, Punjabi (ਪੰਜਾਬੀ), Romanian, Russian, Slovak, Spanish (Español), Swedish, Thai, Turkish (Türkçe), Ukrainian (Українська) and Vietnamese.
+## Portfolio
 
-## Skins (color variations)
+### Comlapse
 
-This theme comes in nine different skins (in addition to the default one).
+Electron 기반 학습 기록 데스크톱 앱 개발 프로젝트입니다.
 
-| `air` | `contrast` | `dark` |
-| --- | --- | --- |
-| [![air skin](https://mmistakes.github.io/minimal-mistakes/assets/images/air-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/air-skin-archive-large.png) | [![contrast skin](https://mmistakes.github.io/minimal-mistakes/assets/images/contrast-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/contrast-skin-archive-large.png) | [![dark skin](https://mmistakes.github.io/minimal-mistakes/assets/images/dark-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/dark-skin-archive-large.png) |
+학습 세션을 기록하고, 타임랩스와 음성 인식, PDF 뷰어, AI 질의 흐름을 하나의 데스크톱 환경에서 다루는 것을 목표로 개발했습니다.
 
-| `dirt` | `mint` | `sunrise` |
-| --- | --- | --- |
-| [![dirt skin](https://mmistakes.github.io/minimal-mistakes/assets/images/dirt-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/dirt-skin-archive-large.png) | [![mint skin](https://mmistakes.github.io/minimal-mistakes/assets/images/mint-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/mint-skin-archive-large.png) | [![sunrise skin](https://mmistakes.github.io/minimal-mistakes/assets/images/sunrise-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/sunrise-skin-archive-large.png) |
+기록한 개발 내용:
 
-| `aqua` | `neon` | `plum` |
-| --- | --- | --- |
-| [![aqua skin](https://mmistakes.github.io/minimal-mistakes/assets/images/aqua-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/aqua-skin-archive-large.png) | [![neon skin](https://mmistakes.github.io/minimal-mistakes/assets/images/neon-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/neon-skin-archive-large.png) | [![plum skin](https://mmistakes.github.io/minimal-mistakes/assets/images/plum-skin-archive.png)](https://mmistakes.github.io/minimal-mistakes/assets/images/plum-skin-archive-large.png) |
+- Electron, React, Vite 기반 앱 구조 설계
+- SQLite 기반 세션 데이터 저장
+- 학습 타임랩스 기록 및 뷰어 기능
+- 녹음 장치 토글과 대시보드 UX 개선
+- Vosk 기반 오프라인 음성 인식 적용
+- PDF 뷰어와 타임랩스 뷰어 확장
 
-## Demo pages
+관련 글:
 
-| Name                                        | Description                                           |
-| ------------------------------------------- | ----------------------------------------------------- |
-| [Post with Header Image][header-image-post] | A post with a large header image. |
-| [HTML Tags and Formatting Post][html-tags-post] | A variety of common markup showing how the theme styles them. |
-| [Syntax Highlighting Post][syntax-post] | Post displaying highlighted code. |
-| [Post with a Gallery][gallery-post] | A post showing several images wrapped in `<figure>` elements. |
-| [Sample Collection Page][sample-collection] | Single page from a collection. |
-| [Categories Archive][categories-archive] | Posts grouped by category. |
-| [Tags Archive][tags-archive] | Posts grouped by tag. |
+- [[Comlapse] 개발일지 1 - Electron 기반 학습 기록 앱 시작](https://encryh.github.io/comlapse/Comlapse-dev-01/)
+- [[Comlapse] 개발일지 2 - 세션 DB, 타임랩스, AI 질의 구조 확장](https://encryh.github.io/comlapse/Comlapse-dev-02/)
+- [[Comlapse] 개발일지 3 - 기록 장치 토글과 대시보드 UX 개선](https://encryh.github.io/comlapse/Comlapse-dev-03/)
+- [[Comlapse] 개발일지 4 - 오프라인 음성인식과 PDF/타임랩스 뷰어 확장](https://encryh.github.io/comlapse/Comlapse-dev-04/)
 
-Additional sample posts are available under [posts archive][year-archive] on the demo site. Source files for these (and the entire demo site) can be found in [`/docs`](docs).
+### C Language Tetris
 
-[header-image-post]: https://mmistakes.github.io/minimal-mistakes/layout-header-image-text-readability/
-[gallery-post]: https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/
-[html-tags-post]: https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/
-[syntax-post]: https://mmistakes.github.io/minimal-mistakes/markup-syntax-highlighting/
-[sample-collection]: https://mmistakes.github.io/minimal-mistakes/recipes/chocolate-chip-cookies/
-[categories-archive]: https://mmistakes.github.io/minimal-mistakes/categories/
-[tags-archive]: https://mmistakes.github.io/minimal-mistakes/tags/
-[year-archive]: https://mmistakes.github.io/minimal-mistakes/year-archive/
+C언어로 구현한 콘솔 기반 테트리스 프로젝트입니다.
 
-## Installation
+배열, 좌표 처리, 입력 처리, 게임 루프를 직접 다루며 C언어 기초를 실제 동작하는 프로그램으로 연결한 프로젝트입니다.
 
-There are three ways to install: as a [gem-based theme](https://jekyllrb.com/docs/themes/#understanding-gem-based-themes), as a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/) (GitHub Pages compatible), or forking/directly copying all of the theme files into your project.
+관련 글:
 
-### Gem-based method
+- [C언어 테트리스 프로젝트](https://encryh.github.io/c/Tetris/)
 
-With Gem-based themes, directories such as the `assets`, `_layouts`, `_includes`, and `_sass` are stored in the theme’s gem, hidden from your immediate view. Yet all of the necessary directories will be read and processed during Jekyll’s build process.
+### Battery Manufacturing CIM Field Note
 
-This allows for easier installation and updating as you don't have to manage any of the theme files. To install:
+배터리 제조 현장의 CIM 설정 경험을 정리한 포트폴리오 기록입니다.
 
-1. Add the following to your `Gemfile`:
+CIM, MES, PLC, 제조 시스템이 현장에서 어떻게 연결되는지 경험 기반으로 정리했습니다.
 
-   ```ruby
-   gem "minimal-mistakes-jekyll"
-   ```
+관련 글:
 
-2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+- [Battery Manufacturing CIM Setup Experience](https://encryh.github.io/portfolio/Daeheung-CIM-setting/)
 
-   ```bash
-   bundle
-   ```
+### Linux Security Lab
 
-3. Set the `theme` in your project's Jekyll `_config.yml` file:
+Ubuntu와 Kali 환경을 사용해 보안 실습 환경을 구성하고 운영하는 기록입니다.
 
-   ```yaml
-   theme: minimal-mistakes-jekyll
-   ```
+다룬 내용:
 
-To update the theme run `bundle update`.
+- VirtualBox 기반 Linux 설치
+- 사용자와 파일 권한 관리
+- 네트워크 설정과 서비스 관리
+- UFW 방화벽 정책 구성
+- Apache, PHP, MariaDB 기반 웹 서버 구축
+- 웹 해킹 실습 환경 구성
 
-### Remote theme method
+관련 글:
 
-Remote themes are similar to Gem-based themes, but do not require `Gemfile` changes or whitelisting making them ideal for sites hosted with GitHub Pages.
+- [리눅스 설치](https://encryh.github.io/linux/Linux1/)
+- [UFW 방화벽 설정 및 웹 서비스 접근 제어 실습](https://encryh.github.io/linux/ufw/)
+- [Ubuntu 기반 Apache + PHP + MariaDB 웹 서버 구축 및 웹 해킹 실습 환경 구성](https://encryh.github.io/linux/WebServer/)
 
-To install:
+### OverTheWire Bandit
 
-1. Create/replace the contents of your `Gemfile` with the following:
+리눅스 기본기와 보안 문제 해결력을 기르기 위한 워게임 풀이 기록입니다.
 
-   ```ruby
-   source "https://rubygems.org"
+명령어 사용, 파일 탐색, 권한 이해, 문자열 처리, 인코딩/디코딩 등 터미널 기반 문제 해결 과정을 단계별로 정리합니다.
 
-   gem "github-pages", group: :jekyll_plugins
-   gem "jekyll-include-cache", group: :jekyll_plugins
-   ```
+관련 카테고리:
 
-2. Add `jekyll-include-cache` to the `plugins` array of your `_config.yml`.
+- [Wargame posts](https://encryh.github.io/categories/#wargame)
 
-3. Fetch and update bundled gems by running the following [Bundler](https://bundler.io/) command:
+## Blog Categories
 
-   ```bash
-   bundle
-   ```
+| Category | Description |
+| --- | --- |
+| Comlapse | 개인 앱 개발일지와 기능 개선 기록 |
+| Linux | 리눅스 실습, 서버, 네트워크, 방화벽 |
+| Wargame | OverTheWire Bandit 풀이 |
+| C | C언어, 포인터, 컴파일, 자료구조 |
+| Packet | Wireshark와 네트워크 패킷 분석 |
+| Hacking | 웹 해킹과 보안 실습 |
+| Portfolio | 프로젝트와 현장 경험 기록 |
 
-4. Add `remote_theme: "mmistakes/minimal-mistakes@4.26.2"` to your `_config.yml` file. Remove any other `theme:` or `remote_theme:` entry.
+## Tech Stack
 
-<!--
-  Dev note: The version number is currently hard-coded in these files:
+이 블로그는 GitHub Pages와 Jekyll 기반으로 운영됩니다.
 
-    - package.json
-    - README.md (this file)
-    - docs/_data/theme.yml
-    - docs/_pages/home.md (in Front Matter "excerpt")
+- Jekyll
+- Minimal Mistakes
+- GitHub Pages
+- Sass/SCSS
+- Lunr.js search
+- Disqus comments
+- Google Analytics
 
-  `package.json` holds the authoritative version number, and the others can be updated with `bundle exec rake version`.
+## Recent Improvements
 
-  The following files should also be regenerated:
+- 홈 화면 상단 메인바에 인라인 검색창 추가
+- 작성한 게시글 제목, 본문, 카테고리, 태그 검색 지원
+- 카테고리 기반 홈 화면 필터링
+- 다크 스킨 기반 블로그 UI 구성
 
-    - _includes/copyright.html, _includes/copyright.js, _sass/minimal-mistakes/_copyright.scss
-      (Run `bundle exec rake clean` then `bundle exec rake copyright` - all three references `package.json`)
-    - assets/js/main.min.js (Run `bundle exec rake js`, references `_includes/copyright.js`)
+## Repository Structure
 
-  *Tip*: The default Rake task will update all of the above files at once.
+```text
+.
+├── _posts/       # 블로그 게시글
+├── _pages/       # 검색, 태그, 카테고리 페이지
+├── _includes/    # Jekyll include templates
+├── _layouts/     # Jekyll layouts
+├── _sass/        # 스타일시트
+├── assets/       # JS, CSS, 이미지
+├── image/        # 게시글 이미지
+└── _config.yml   # 사이트 설정
+```
 
-  Additionally, the license year is hard-coded in these files and are NOT covered by a Rake task:
+## Local Development
 
-    - README.md (this file, near the end)
-    - LICENSE
--->
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
-**Looking for an example?** Use the [Minimal Mistakes remote theme starter](https://github.com/mmistakes/mm-github-pages-starter/generate) for the quickest method of getting a GitHub Pages hosted site up and running. Generate a new repository from the starter, replace sample content with your own, and configure as needed.
-
-## Usage
-
-For detailed instructions on how to configure, customize, add/migrate content, and more read the [theme's documentation](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/).
-
-## Contributing
-
-Found a typo in the documentation or interested in [fixing a bug](https://github.com/mmistakes/minimal-mistakes/issues)? Then by all means [submit an issue](https://github.com/mmistakes/minimal-mistakes/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/). If this is your first pull request, it may be helpful to read up on the [GitHub Flow](https://guides.github.com/introduction/flow/) first.
-
-For help with using the theme or general Jekyll support questions, please use the [Jekyll Talk forums](https://talk.jekyllrb.com/).
-
-### Pull Requests
-
-When submitting a pull request:
-
-1. Clone the repo.
-2. Create a branch off of `master` and give it a meaningful name (e.g. `my-awesome-new-feature`).
-3. Open a pull request on GitHub and describe the feature or fix.
-
-Theme documentation and demo pages can be found in the [`/docs`](docs) if submitting improvements, typo corrections, etc.
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-To test the theme, run `bundle exec rake preview` and open your browser at `http://localhost:4000/test/`. This starts a Jekyll server using content in the `test/` directory. As modifications are made to the theme and test site, it will regenerate and you should see the changes in the browser after a refresh.
+로컬 서버는 기본적으로 `http://localhost:4000`에서 확인할 수 있습니다.
 
 ## Credits
 
-### Creator
+이 블로그는 [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)을 기반으로 커스터마이징했습니다.
 
-**Michael Rose**
-
-- <https://mademistakes.com>
-- <https://twitter.com/mmistakes>
-- <https://github.com/mmistakes>
-
-### Icons + Demo Images:
-
-- [The Noun Project](https://thenounproject.com) - Garrett Knoll, Arthur Shlain, and [tracy tam](https://thenounproject.com/tracytam)
-- [Font Awesome](http://fontawesome.io/)
-- [Unsplash](https://unsplash.com/)
-
-### Other:
-
-- [Jekyll](http://jekyllrb.com/)
-- [jQuery](http://jquery.com/)
-- [Susy](http://susy.oddbird.net/)
-- [Breakpoint](http://breakpoint-sass.com/)
-- [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/)
-- [FitVids.JS](http://fitvidsjs.com/)
-- [GreedyNav.js](https://github.com/lukejacksonn/GreedyNav)
-- [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-- [Gumshoe](https://github.com/cferdinandi/gumshoe)
-- [jQuery throttle / debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/)
-- [Lunr](http://lunrjs.com)
-- [Clipboard.js](https://clipboardjs.com)
+Theme copyright: Michael Rose and contributors.
 
 ## License
 
-The MIT License (MIT)
-
-Copyright (c) 2013-2024 Michael Rose and contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-Minimal Mistakes incorporates icons from [The Noun Project](https://thenounproject.com/) 
-creators Garrett Knoll, Arthur Shlain, and tracy tam.
-Icons are distributed under Creative Commons Attribution 3.0 United States (CC BY 3.0 US).
-
-Minimal Mistakes incorporates [Font Awesome](http://fontawesome.io/),
-Copyright (c) 2017 Dave Gandy.
-Font Awesome is distributed under the terms of the [SIL OFL 1.1](http://scripts.sil.org/OFL) 
-and [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates photographs from [Unsplash](https://unsplash.com).
-
-Minimal Mistakes incorporates [Susy](http://susy.oddbird.net/),
-Copyright (c) 2017, Miriam Eric Suzanne.
-Susy is distributed under the terms of the [BSD 3-clause "New" or "Revised" License](https://opensource.org/licenses/BSD-3-Clause).
-
-Minimal Mistakes incorporates [Breakpoint](http://breakpoint-sass.com/).
-Breakpoint is distributed under the terms of the [MIT/GPL Licenses](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [FitVids.js](https://github.com/davatron5000/FitVids.js/),
-Copyright (c) 2013 Dave Rubert and Chris Coyier.
-FitVids is distributed under the terms of the [WTFPL License](http://www.wtfpl.net/).
-
-Minimal Mistakes incorporates [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/),
-Copyright (c) 2014-2016 Dmitry Semenov, http://dimsemenov.com.
-Magnific Popup is distributed under the terms of the MIT License.
-
-Minimal Mistakes incorporates [Smooth Scroll](http://github.com/cferdinandi/smooth-scroll),
-Copyright (c) 2019 Chris Ferdinandi.
-Smooth Scroll is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [Gumshoejs](http://github.com/cferdinandi/gumshoe),
-Copyright (c) 2019 Chris Ferdinandi.
-Gumshoejs is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [jQuery throttle / debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/),
-Copyright (c) 2010 "Cowboy" Ben Alman.
-jQuery throttle / debounce is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [GreedyNav.js](https://github.com/lukejacksonn/GreedyNav),
-Copyright (c) 2015 Luke Jackson.
-GreedyNav.js is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [Jekyll Group-By-Array](https://github.com/mushishi78/jekyll-group-by-array),
-Copyright (c) 2015 Max White <mushishi78@gmail.com>.
-Jekyll Group-By-Array is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [@allejo's Pure Liquid Jekyll Table of Contents](https://allejo.io/blog/a-jekyll-toc-in-liquid-only/),
-Copyright (c) 2017 Vladimir Jimenez.
-Pure Liquid Jekyll Table of Contents is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [Lunr](http://lunrjs.com),
-Copyright (c) 2018 Oliver Nightingale.
-Lunr is distributed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-Minimal Mistakes incorporates [clipboard.js](https://clipboardjs.com/),
-Copyright (c) 2021 Zeno Rocha.
-Clipboard.js is distributed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+테마 원본은 MIT License를 따릅니다. 블로그 글과 이미지의 저작권은 별도 명시가 없는 한 작성자에게 있습니다.
