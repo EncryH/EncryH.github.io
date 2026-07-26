@@ -21,8 +21,6 @@ Comlapse를 만들면서 Electron이나 LLM API 연동 경험은 생겼는데, �
 | 예선 | 보고서 제출 (2026.06.15 ~ 2026.07.10) |
 | 본선 | 2026.08.21 |
 
-![방산 무인체계 운용 환경 개념도 — UAV/UGV, 지상통제, 전술통신망의 연동 구조](/image/2026-07-27-DAH2026-preliminary/defense-uav-concept.png)
-
 # 3. 팀과 내 역할
 
 팀명은 **TEAM SMU**(Secure Modeling Unit). 상명대 정보보안공학과 4명이다.
@@ -39,6 +37,8 @@ Comlapse를 만들면서 Electron이나 LLM API 연동 경험은 생겼는데, �
 # 4. Docker로 방산 통신망 재현하기
 
 당연히 진짜 UAV를 날릴 수는 없다. Docker Compose로 방산 무인체계 통신 구조를 컨테이너로 재현했다.
+
+![방산 무인체계 운용 환경 개념도 — UAV/UGV, 지상통제, 전술통신망의 연동 구조](/image/2026-07-27-DAH2026-preliminary/defense-uav-concept.png)
 
 ```text
 ┌──────────────────────────────────────────────────┐
