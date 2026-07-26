@@ -364,14 +364,14 @@ body {
 }
 
 // Single post — full width when TOC is on left
-.page {
+.layout--single .page {
   @include breakpoint($large) {
-    width: 100%;
+    width: calc(100% - #{$right-sidebar-width-narrow});
     padding-inline-end: 0;
   }
 
   @include breakpoint($x-large) {
-    width: 100%;
+    width: calc(100% - #{$right-sidebar-width-narrow});
     padding-inline-end: 0;
   }
 }
