@@ -386,10 +386,11 @@ body {
   }
 }
 
-.toc__menu a {
+.page__content .toc .toc__menu a,
+.page__content .toc .toc__menu a:visited {
   font-size: 0.75em;
   color: #333333;
-  text-decoration: none;
+  text-decoration: none !important;
   border-bottom: none;
   padding: 0.2rem 1rem;
   line-height: 1.6;
