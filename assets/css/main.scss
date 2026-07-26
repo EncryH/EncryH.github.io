@@ -258,15 +258,50 @@ body {
 // Page / Single post
 // ==========================================
 
+.page__category-label {
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: $primary-color;
+  margin-bottom: 0.4em;
+}
+
 .page__title {
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: 700;
   color: $dark-gray;
   line-height: 1.35;
+  margin-bottom: 0.3em;
 
   a {
     color: $dark-gray;
   }
+}
+
+.page__header-meta {
+  font-size: 0.75em;
+  color: #aaaaaa;
+  margin-bottom: 0;
+}
+
+.page__header-author {
+  color: #999999;
+}
+
+.page__header-sep {
+  color: #d0d0d0;
+}
+
+.page__header-date {
+  color: #aaaaaa;
+}
+
+.page__header-divider {
+  border: none;
+  border-top: 1px solid $primary-color;
+  margin-top: 0.8em;
+  margin-bottom: 1.5em;
+  opacity: 0.5;
 }
 
 .page__meta {
@@ -339,26 +374,27 @@ body {
 
 .toc {
   border: 1px solid #e8e8e8;
-  background-color: #fafafa;
-  border-radius: 4px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
 
   .nav__title {
-    background: #444444;
-    color: #ffffff;
-    font-size: 0.7em;
-    padding: 0.35rem 0.65rem;
+    background: none;
+    color: #333333;
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 0.8rem 1rem 0.3rem;
   }
 }
 
 .toc__menu a {
-  font-size: 0.7em;
-  color: #888888;
-  border-bottom-color: #f0f0f0;
-  padding: 0.15rem 0.65rem;
-  line-height: 1.5;
+  font-size: 0.75em;
+  color: #555555;
+  border-bottom: none;
+  padding: 0.2rem 1rem;
+  line-height: 1.6;
 
   &:hover {
-    color: $dark-gray;
+    color: $primary-color;
   }
 }
 

@@ -29,13 +29,23 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header>
+        <header class="page__header-tistory">
+          {% if page.categories.size > 0 %}
+            <span class="page__category-label">{{ page.categories | first }}</span>
+          {% endif %}
           {% if page.title -%}
           <h1 id="page-title" class="page__title" itemprop="headline">
             <a href="{{ page.url | absolute_url }}" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>
           {%- endif %}
-          {% include page__meta.html %}
+          <div class="page__header-meta">
+            <span class="page__header-author">{{ site.author.name | default: site.name }}</span>
+            {% if page.date %}
+              <span class="page__header-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+              <span class="page__header-date">{{ page.date | date: "%Y. %-m. %-d. %H:%M" }}</span>
+            {% endif %}
+          </div>
+          <hr class="page__header-divider">
         </header>
       {% endunless %}
 
