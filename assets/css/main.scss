@@ -173,13 +173,13 @@ body {
 }
 
 .archive__item {
-  padding: 1em 0;
+  padding: 0.8em 0;
   border-bottom: 1px solid #f0f0f0;
 }
 
 .archive__item-title {
-  font-size: 1.15em;
-  font-weight: 700;
+  font-size: 1.05em;
+  font-weight: 500;
   line-height: 1.4;
   margin-bottom: 0.15em;
   letter-spacing: -0.02em;
@@ -200,7 +200,7 @@ body {
 }
 
 .archive__item-excerpt {
-  font-size: 0.8em;
+  font-size: 0.75em;
   color: #888888;
   line-height: 1.65;
   margin-top: 0.25em;
@@ -208,9 +208,9 @@ body {
 }
 
 .archive__item-meta {
-  margin-top: 0.35em;
+  margin-top: 0.3em;
   margin-bottom: 0;
-  font-size: 0.75em;
+  font-size: 0.7em;
   color: #aaaaaa;
   line-height: 1.4;
 }
