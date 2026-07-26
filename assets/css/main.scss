@@ -5,15 +5,180 @@ search: false
 
 @charset "utf-8";
 
+// Layout
 $max-width: 1600px;
 $x-large: 1600px;
 $right-sidebar-width-narrow: 260px;
 $right-sidebar-width: 360px;
 
+// Colors — white background theme
+$background-color: #ffffff;
+$text-color: #222222;
+$muted-text-color: #6b7280;
+$primary-color: #0ea5e9;
+$border-color: #e5e7eb;
+$code-background-color: #f3f4f6;
+$code-background-color-dark: #e5e7eb;
+$form-background-color: #f9fafb;
+$footer-background-color: #f9fafb;
+
+// Links
+$link-color: #0284c7;
+$link-color-hover: #0369a1;
+$link-color-visited: #6d28d9;
+$masthead-link-color: #222222;
+$masthead-link-color-hover: #000000;
+
+// Grays
+$gray: #6b7280;
+$dark-gray: #374151;
+$darker-gray: #1f2937;
+$light-gray: #d1d5db;
+$lighter-gray: #f3f4f6;
+
+// Syntax highlighting — light theme
+$base00: #f8f9fa;
+$base01: #e9ecef;
+$base02: #dee2e6;
+$base03: #868e96;
+$base04: #495057;
+$base05: #212529;
+$base06: #212529;
+$base07: #000000;
+$base08: #e03131;
+$base09: #e8590c;
+$base0a: #f08c00;
+$base0b: #2f9e44;
+$base0c: #1098ad;
+$base0d: #1c7ed6;
+$base0e: #7950f2;
+$base0f: #c92a2a;
+
+// Status colors
+$info-color: #0284c7;
+$success-color: #16a34a;
+$warning-color: #d97706;
+$danger-color: #dc2626;
+
+// Notice
+$notice-background-mix: 90%;
+
+// Active color for TOC
+$active-color: mix(#fff, $primary-color, 80%);
+$focus-color: $primary-color;
+
+// Box shadow
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+// Masthead hidden, space preserved
 .masthead {
   visibility: hidden;
   margin-bottom: -2em;
+}
+
+// Sidebar author profile
+.sidebar {
+  @include breakpoint($large) {
+    opacity: 1;
+  }
+}
+
+.author__avatar img {
+  @include breakpoint($large) {
+    border-color: $border-color;
+  }
+}
+
+// Archive item titles — link color
+.archive__item-title a {
+  color: $dark-gray;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+// Page title color
+.page__title a {
+  color: $dark-gray;
+}
+
+// TOC
+.toc {
+  border-color: $border-color;
+  background-color: #ffffff;
+
+  .nav__title {
+    background: $primary-color;
+    color: #ffffff;
+  }
+}
+
+// Pagination
+.pagination li a {
+  border-color: $border-color;
+  color: $muted-text-color;
+
+  &.current,
+  &.current.disabled {
+    color: #ffffff;
+    background: $primary-color;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+// Footer
+.page__footer {
+  border-top: 1px solid $border-color;
+  color: $muted-text-color;
+}
+
+// Blockquote
+blockquote {
+  border-inline-start-color: $primary-color;
+  color: $dark-gray;
+}
+
+// Taxonomy items
+.page__taxonomy-item {
+  border-color: $border-color;
+  color: $dark-gray;
+
+  &:hover {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+// Search bar
+.masthead-search {
+  border-color: $border-color;
+  background: $form-background-color;
+}
+
+// Social icons in sidebar — ensure visibility
+.author__urls.social-icons i,
+.author__urls.social-icons .svg-inline--fa {
+  color: $muted-text-color;
+}
+
+.author__urls a:hover {
+  color: $primary-color;
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  color: $muted-text-color;
+}
+
+// Selection highlight
+::selection {
+  background: rgba($primary-color, 0.15);
+  color: $text-color;
 }
