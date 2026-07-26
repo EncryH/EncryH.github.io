@@ -160,48 +160,71 @@ body {
 }
 
 // ==========================================
-// Archive / Post list (home)
+// Archive / Post list (tistory style)
 // ==========================================
 
 .archive__subtitle {
-  font-size: 1.1em;
-  font-weight: 700;
-  color: $dark-gray;
+  font-size: 0.95em;
+  font-weight: 400;
+  color: #888888;
   border-bottom: 1px solid $border-color;
   padding-bottom: 0.75em;
+  margin-bottom: 0;
 }
 
 .archive__item {
-  padding: 1.25em 0;
-  border-bottom: 1px solid $border-color;
+  padding: 1.5em 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .archive__item-title {
-  font-size: 1.35em;
+  font-size: 1.4em;
   font-weight: 700;
   line-height: 1.4;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.15em;
+  letter-spacing: -0.02em;
 
   a {
-    color: $dark-gray;
+    color: #1a1a1a;
     text-decoration: none;
 
     &:visited {
-      color: $dark-gray;
+      color: #1a1a1a;
     }
 
     &:hover {
-      color: $primary-color;
-      text-decoration: none;
+      color: #1a1a1a;
+      text-decoration: underline;
     }
   }
 }
 
 .archive__item-excerpt {
   font-size: 0.875em;
-  color: $muted-text-color;
-  line-height: 1.7;
-  margin-top: 0.4em;
+  color: #888888;
+  line-height: 1.65;
+  margin-top: 0.35em;
+  margin-bottom: 0;
+}
+
+.archive__item-meta {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-size: 0.8em;
+  color: #aaaaaa;
+  line-height: 1.4;
+}
+
+.archive__item-category {
+  color: #aaaaaa;
+}
+
+.archive__item-meta-sep {
+  color: #d0d0d0;
+}
+
+.archive__item-date {
+  color: #aaaaaa;
 }
 
 .list__item .page__meta {

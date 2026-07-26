@@ -28,7 +28,13 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    {% include page__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 200 }}</p>{% endif %}
+    <p class="archive__item-meta">
+      {% if post.categories.size > 0 %}
+        <span class="archive__item-category">{{ post.categories | join: "/" }}</span>
+        <span class="archive__item-meta-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      {% endif %}
+      <span class="archive__item-date">{{ post.date | date: "%Y. %-m. %-d. %H:%M" }}</span>
+    </p>
   </article>
 </div>

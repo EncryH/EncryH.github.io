@@ -4,8 +4,9 @@ layout: archive
 
 {{ content }}
 
+{% assign total_posts = site.posts | size %}
 {% assign recent_posts_label = site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" %}
-<h3 class="archive__subtitle" data-home-posts-title data-default-title="{{ recent_posts_label }}">{{ recent_posts_label }}</h3>
+<h3 class="archive__subtitle" data-home-posts-title data-default-title="전체 글 ({{ total_posts }})">전체 글 ({{ total_posts }})</h3>
 
 {% if page.home_category_sidebar %}
   {% include home-category-sidebar.html %}
