@@ -62,17 +62,26 @@ layout: default
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+      {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          <span class="post-tags__badge">Tag</span>
+          {% for tag in page.tags %}
+            <span class="post-tags__item">{{ tag }}{% unless forloop.last %},{% endunless %}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="post-author-card">
+        <div class="post-author-card__info">
+          <a href="{{ '/' | relative_url }}" class="post-author-card__name">{{ site.author.name }}</a>
+          <p class="post-author-card__bio">{{ site.author.bio }}</p>
+        </div>
+        {% if site.author.avatar %}
+          <a href="{{ '/' | relative_url }}">
+            <img class="post-author-card__avatar" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+          </a>
         {% endif %}
-        {% include page__taxonomy.html %}
-        {% include page__date.html %}
-      </footer>
-
-      {% if page.share %}{% include social-share.html %}{% endif %}
-
-      {% include post_pagination.html %}
+      </div>
     </div>
 
   </article>

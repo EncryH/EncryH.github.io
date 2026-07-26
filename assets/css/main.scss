@@ -420,6 +420,75 @@ body {
 }
 
 // ==========================================
+// Post footer — tags + author card
+// ==========================================
+
+.post-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  font-size: 0.85em;
+}
+
+.post-tags__badge {
+  display: inline-block;
+  background: #6bbe6b;
+  color: #ffffff;
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  margin-right: 0.3em;
+}
+
+.post-tags__item {
+  color: #666666;
+}
+
+.post-author-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.post-author-card__info {
+  flex: 1;
+}
+
+.post-author-card__name {
+  font-size: 1em;
+  font-weight: 700;
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.post-author-card__bio {
+  font-size: 0.8em;
+  color: #888888;
+  margin: 0.3em 0 0;
+}
+
+.post-author-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-left: 1.5em;
+}
+
+// ==========================================
 // Pagination
 // ==========================================
 
