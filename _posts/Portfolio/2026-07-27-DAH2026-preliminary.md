@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[DAH 2026] 국방 AI 사이버보안 해커톤 예선 — 방산 UAV 도메인 공격·방어 에이전트 설계기"
+title: "[DAH 2026] 국방 AI 사이버보안 해커톤 예선 — 방산 UAV 도메인 공격·방어 에이전트 설계"
 categories: Portfolio
 tag: [DAH, Hackathon, UAV, MAVLink, AI Agent, Docker, Python, 방산, 보안]
 toc: true
