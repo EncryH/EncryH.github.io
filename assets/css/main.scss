@@ -11,48 +11,75 @@ $x-large: 1600px;
 $right-sidebar-width-narrow: 260px;
 $right-sidebar-width: 360px;
 
+// Typography — Pretendard
+$global-font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$header-font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$sans-serif: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$sans-serif-narrow: $sans-serif;
+$monospace: "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace;
+$caption-font-family: $sans-serif;
+
+// Font sizes
+$doc-font-size: 16px;
+$type-size-1: 2em;
+$type-size-2: 1.625em;
+$type-size-3: 1.375em;
+$type-size-4: 1.125em;
+$type-size-5: 1em;
+$type-size-6: 0.8125em;
+$type-size-7: 0.6875em;
+$type-size-8: 0.625em;
+
+// Headline sizes
+$h-size-1: 1.75em;
+$h-size-2: 1.375em;
+$h-size-3: 1.125em;
+$h-size-4: 1em;
+$h-size-5: 0.9375em;
+$h-size-6: 0.875em;
+
 // Colors — white background theme
 $background-color: #ffffff;
-$text-color: #222222;
-$muted-text-color: #6b7280;
+$text-color: #333333;
+$muted-text-color: #808080;
 $primary-color: #0ea5e9;
-$border-color: #e5e7eb;
-$code-background-color: #f3f4f6;
-$code-background-color-dark: #e5e7eb;
-$form-background-color: #f9fafb;
-$footer-background-color: #f9fafb;
+$border-color: #eeeeee;
+$code-background-color: #f8f8f8;
+$code-background-color-dark: #f0f0f0;
+$form-background-color: #fafafa;
+$footer-background-color: #fafafa;
 
 // Links
-$link-color: #0284c7;
-$link-color-hover: #0369a1;
-$link-color-visited: #6d28d9;
-$masthead-link-color: #222222;
+$link-color: #333333;
+$link-color-hover: #0ea5e9;
+$link-color-visited: #555555;
+$masthead-link-color: #333333;
 $masthead-link-color-hover: #000000;
 
 // Grays
-$gray: #6b7280;
-$dark-gray: #374151;
-$darker-gray: #1f2937;
-$light-gray: #d1d5db;
-$lighter-gray: #f3f4f6;
+$gray: #808080;
+$dark-gray: #333333;
+$darker-gray: #1a1a1a;
+$light-gray: #d0d0d0;
+$lighter-gray: #f5f5f5;
 
 // Syntax highlighting — light theme
-$base00: #f8f9fa;
-$base01: #e9ecef;
-$base02: #dee2e6;
-$base03: #868e96;
-$base04: #495057;
-$base05: #212529;
-$base06: #212529;
+$base00: #fafafa;
+$base01: #f0f0f0;
+$base02: #e8e8e8;
+$base03: #999999;
+$base04: #555555;
+$base05: #333333;
+$base06: #222222;
 $base07: #000000;
-$base08: #e03131;
-$base09: #e8590c;
-$base0a: #f08c00;
-$base0b: #2f9e44;
+$base08: #d73a49;
+$base09: #e36209;
+$base0a: #c18401;
+$base0b: #22863a;
 $base0c: #1098ad;
-$base0d: #1c7ed6;
-$base0e: #7950f2;
-$base0f: #c92a2a;
+$base0d: #0366d6;
+$base0e: #6f42c1;
+$base0f: #cb2431;
 
 // Status colors
 $info-color: #0284c7;
@@ -61,17 +88,28 @@ $warning-color: #d97706;
 $danger-color: #dc2626;
 
 // Notice
-$notice-background-mix: 90%;
+$notice-background-mix: 92%;
 
 // Active color for TOC
 $active-color: mix(#fff, $primary-color, 80%);
 $focus-color: $primary-color;
 
 // Box shadow
-$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+$box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// ==========================================
+// Global overrides
+// ==========================================
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
 
 // Masthead hidden, space preserved
 .masthead {
@@ -79,7 +117,10 @@ $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin-bottom: -2em;
 }
 
-// Sidebar author profile
+// ==========================================
+// Sidebar
+// ==========================================
+
 .sidebar {
   @include breakpoint($large) {
     opacity: 1;
@@ -88,44 +129,172 @@ $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
 .author__avatar img {
   @include breakpoint($large) {
-    border-color: $border-color;
+    border: 1px solid $border-color;
   }
 }
 
-// Archive item titles — link color
-.archive__item-title a {
+.author__name {
+  font-weight: 700;
+  font-size: 1.05em;
   color: $dark-gray;
+}
+
+.author__bio {
+  font-size: 0.85em;
+  color: $muted-text-color;
+  line-height: 1.6;
+}
+
+.author__urls a {
+  color: $dark-gray;
+  font-size: 0.875em;
 
   &:hover {
     color: $primary-color;
   }
 }
 
-// Page title color
-.page__title a {
-  color: $dark-gray;
+.author__urls.social-icons i,
+.author__urls.social-icons .svg-inline--fa {
+  color: $muted-text-color;
 }
 
+// ==========================================
+// Archive / Post list (home)
+// ==========================================
+
+.archive__subtitle {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: $dark-gray;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.75em;
+}
+
+.archive__item {
+  padding: 1.25em 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.archive__item-title {
+  font-size: 1.35em;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.3em;
+
+  a {
+    color: $dark-gray;
+    text-decoration: none;
+
+    &:visited {
+      color: $dark-gray;
+    }
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.archive__item-excerpt {
+  font-size: 0.875em;
+  color: $muted-text-color;
+  line-height: 1.7;
+  margin-top: 0.4em;
+}
+
+.list__item .page__meta {
+  font-size: 0.75em;
+  color: #aaaaaa;
+  margin-top: 0.25em;
+}
+
+// ==========================================
+// Page / Single post
+// ==========================================
+
+.page__title {
+  font-size: 1.75em;
+  font-weight: 800;
+  color: $dark-gray;
+  line-height: 1.3;
+
+  a {
+    color: $dark-gray;
+  }
+}
+
+.page__meta {
+  color: #aaaaaa;
+  font-size: 0.8em;
+}
+
+.page__content {
+  font-size: 1em;
+  line-height: 1.8;
+  color: $text-color;
+
+  h2 {
+    font-weight: 700;
+    border-bottom-color: $border-color;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+
+  a:not(.btn) {
+    color: $primary-color;
+    text-decoration: underline;
+    text-decoration-color: rgba($primary-color, 0.3);
+    text-underline-offset: 2px;
+
+    &:hover {
+      text-decoration-color: $primary-color;
+    }
+  }
+}
+
+// ==========================================
 // TOC
+// ==========================================
+
 .toc {
-  border-color: $border-color;
+  border: 1px solid $border-color;
   background-color: #ffffff;
 
   .nav__title {
     background: $primary-color;
     color: #ffffff;
+    font-size: 0.8em;
   }
 }
 
+.toc__menu a {
+  font-size: 0.8em;
+  color: $muted-text-color;
+  border-bottom-color: $border-color;
+
+  &:hover {
+    color: $dark-gray;
+  }
+}
+
+// ==========================================
 // Pagination
+// ==========================================
+
 .pagination li a {
   border-color: $border-color;
   color: $muted-text-color;
+  font-size: 0.85em;
 
   &.current,
   &.current.disabled {
     color: #ffffff;
     background: $primary-color;
+    border-color: $primary-color;
   }
 
   &:hover {
@@ -133,22 +302,34 @@ $box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 }
 
+// ==========================================
 // Footer
+// ==========================================
+
 .page__footer {
   border-top: 1px solid $border-color;
-  color: $muted-text-color;
+  color: #aaaaaa;
+  font-size: 0.8em;
 }
 
+// ==========================================
 // Blockquote
+// ==========================================
+
 blockquote {
-  border-inline-start-color: $primary-color;
-  color: $dark-gray;
+  border-inline-start-color: $border-color;
+  color: $muted-text-color;
+  font-style: normal;
 }
 
+// ==========================================
 // Taxonomy items
+// ==========================================
+
 .page__taxonomy-item {
   border-color: $border-color;
-  color: $dark-gray;
+  color: $muted-text-color;
+  font-size: 0.8em;
 
   &:hover {
     color: $primary-color;
@@ -156,29 +337,48 @@ blockquote {
   }
 }
 
-// Search bar
+// ==========================================
+// Category sidebar on home
+// ==========================================
+
+.nav__list .nav__items a {
+  font-size: 0.9em;
+  color: $dark-gray;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.nav__sub-title {
+  font-size: 0.85em;
+  color: $dark-gray;
+  border-bottom-color: $border-color;
+}
+
+// ==========================================
+// Breadcrumbs
+// ==========================================
+
+.breadcrumbs {
+  color: #aaaaaa;
+  font-size: 0.8em;
+}
+
+// ==========================================
+// Search
+// ==========================================
+
 .masthead-search {
   border-color: $border-color;
   background: $form-background-color;
 }
 
-// Social icons in sidebar — ensure visibility
-.author__urls.social-icons i,
-.author__urls.social-icons .svg-inline--fa {
-  color: $muted-text-color;
-}
-
-.author__urls a:hover {
-  color: $primary-color;
-}
-
-// Breadcrumbs
-.breadcrumbs {
-  color: $muted-text-color;
-}
-
+// ==========================================
 // Selection highlight
+// ==========================================
+
 ::selection {
-  background: rgba($primary-color, 0.15);
+  background: rgba($primary-color, 0.12);
   color: $text-color;
 }
