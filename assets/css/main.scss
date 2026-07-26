@@ -122,11 +122,13 @@ body {
   @include breakpoint($large) {
     float: inline-end;
     width: calc(100% - #{$right-sidebar-width-narrow});
+    padding-inline-start: 4em;
     padding-inline-end: 0;
   }
 
   @include breakpoint($x-large) {
     width: calc(100% - #{$right-sidebar-width-narrow});
+    padding-inline-start: 4em;
     padding-inline-end: 0;
   }
 }
