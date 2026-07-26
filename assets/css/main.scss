@@ -117,26 +117,17 @@ body {
   margin-bottom: -2em;
 }
 
-// Home layout — archive takes full width (no right sidebar)
+// Home layout — no right sidebar, expand into that space
 .layout--home .archive {
   @include breakpoint($large) {
-    width: 100%;
+    float: inline-end;
+    width: calc(100% - #{$right-sidebar-width-narrow});
     padding-inline-end: 0;
   }
 
   @include breakpoint($x-large) {
-    width: 100%;
+    width: calc(100% - #{$right-sidebar-width-narrow});
     padding-inline-end: 0;
-  }
-}
-
-.layout--home .page__related {
-  @include breakpoint($large) {
-    width: 100%;
-  }
-
-  @include breakpoint($x-large) {
-    width: 100%;
   }
 }
 
@@ -340,38 +331,45 @@ body {
 }
 
 .toc {
-  border: 1px solid $border-color;
+  border: 1px solid #e8e8e8;
   background-color: #fafafa;
   border-radius: 4px;
 
   .nav__title {
-    background: #333333;
+    background: #444444;
     color: #ffffff;
-    font-size: 0.75em;
-    padding: 0.4rem 0.75rem;
+    font-size: 0.7em;
+    padding: 0.35rem 0.65rem;
   }
 }
 
 .toc__menu a {
-  font-size: 0.75em;
-  color: $muted-text-color;
+  font-size: 0.7em;
+  color: #888888;
   border-bottom-color: #f0f0f0;
-  padding: 0.2rem 0.75rem;
+  padding: 0.15rem 0.65rem;
+  line-height: 1.5;
 
   &:hover {
     color: $dark-gray;
   }
 }
 
-// Single post — full width when TOC is on left
+// Single post — centered narrower layout
+.layout--single #main {
+  @include breakpoint($x-large) {
+    max-width: 900px;
+  }
+}
+
 .layout--single .page {
   @include breakpoint($large) {
-    width: calc(100% - #{$right-sidebar-width-narrow});
+    width: 100%;
     padding-inline-end: 0;
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width-narrow});
+    width: 100%;
     padding-inline-end: 0;
   }
 }
