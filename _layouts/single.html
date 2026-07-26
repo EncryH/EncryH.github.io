@@ -60,29 +60,32 @@ layout: default
         {% endif %}
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
-      </section>
 
-      {% if page.tags.size > 0 %}
-        <div class="post-tags">
-          <span class="post-tags__badge">Tag</span>
-          {% for tag in page.tags %}
-            <span class="post-tags__item">{{ tag }}{% unless forloop.last %},{% endunless %}</span>
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      <div class="post-author-card">
-        <div class="post-author-card__info">
-          <a href="{{ '/' | relative_url }}" class="post-author-card__name">{{ site.author.name }}</a>
-          <p class="post-author-card__bio">{{ site.author.bio }}</p>
-        </div>
-        {% if site.author.avatar %}
-          <a href="{{ '/' | relative_url }}">
-            <img class="post-author-card__avatar" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
-          </a>
+        {% if page.tags.size > 0 %}
+          <div class="post-tags">
+            <span class="post-tags__badge">Tag</span>
+            {% for tag in page.tags %}
+              <span class="post-tags__item">{{ tag }}{% unless forloop.last %},{% endunless %}</span>
+            {% endfor %}
+          </div>
         {% endif %}
-      </div>
+
+        <div class="post-author-card">
+          <div class="post-author-card__info">
+            <a href="{{ '/' | relative_url }}" class="post-author-card__name">{{ site.author.name }}</a>
+            <p class="post-author-card__bio">{{ site.author.bio }}</p>
+          </div>
+          {% if site.author.avatar %}
+            <a href="{{ '/' | relative_url }}">
+              <img class="post-author-card__avatar" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+            </a>
+          {% endif %}
+        </div>
+      </section>
     </div>
 
+    {% if site.comments.provider and page.comments %}
+      {% include comments.html %}
+    {% endif %}
   </article>
 </div>
