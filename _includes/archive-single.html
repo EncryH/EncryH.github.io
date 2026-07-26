@@ -21,20 +21,31 @@
         <img src="{{ teaser | relative_url }}" alt="">
       </div>
     {% endif %}
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+    <div class="archive__item-body">
+      <div class="archive__item-text">
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+          {% if post.link %}
+            <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+          {% else %}
+            <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+          {% endif %}
+        </h2>
+        {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 200 }}</p>{% endif %}
+        <p class="archive__item-meta">
+          {% if post.categories.size > 0 %}
+            <span class="archive__item-category">{{ post.categories | join: "/" }}</span>
+            <span class="archive__item-meta-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          {% endif %}
+          <span class="archive__item-date">{{ post.date | date: "%Y. %-m. %-d. %H:%M" }}</span>
+        </p>
+      </div>
+      {% if include.type != "grid" and teaser %}
+        <div class="archive__item-teaser-right">
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ teaser | relative_url }}" alt="">
+          </a>
+        </div>
       {% endif %}
-    </h2>
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 200 }}</p>{% endif %}
-    <p class="archive__item-meta">
-      {% if post.categories.size > 0 %}
-        <span class="archive__item-category">{{ post.categories | join: "/" }}</span>
-        <span class="archive__item-meta-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-      {% endif %}
-      <span class="archive__item-date">{{ post.date | date: "%Y. %-m. %-d. %H:%M" }}</span>
-    </p>
+    </div>
   </article>
 </div>
