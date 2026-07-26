@@ -139,6 +139,10 @@ body {
   @include breakpoint($large) {
     opacity: 1;
   }
+
+  @include breakpoint($x-large) {
+    width: calc(#{$right-sidebar-width-narrow} - 1em);
+  }
 }
 
 .author__avatar img {

@@ -21,11 +21,11 @@ title                    : "EncryH.blog"
 title_separator          : "|"
 subtitle                 : # "의미있는 학습을 기록하는 공간"
 name                     : "Kang Humin"
-description              : "보안 학습을 기록하는 블로그"
+description              : "AI · Security 기술 블로그"
 url                      : "https://EncryH.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/images/Logo.png" # path of fallback teaser image, e.g. 
+teaser                   : "/assets/images/profile.png" # path of fallback teaser image, e.g.
 logo                     : "/assets/images/Logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # false (default)
@@ -95,7 +95,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : "/assets/images/profile.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -115,7 +115,7 @@ analytics:
 author:
   name             : "Kang Humin"
   avatar           : "/assets/images/profile.png"
-  bio              : "보안 학습을 기록하는 블로그"
+  bio              : "AI · Security 기술 블로그"
   location         : # "South Korea"
   email            : # "khm037723@gmail.com"
   links:
