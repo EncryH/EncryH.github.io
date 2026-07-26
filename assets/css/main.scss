@@ -5,5 +5,10 @@ search: false
 
 @charset "utf-8";
 
+$max-width: 1600px;
+$x-large: 1600px;
+$right-sidebar-width-narrow: 260px;
+$right-sidebar-width: 360px;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
