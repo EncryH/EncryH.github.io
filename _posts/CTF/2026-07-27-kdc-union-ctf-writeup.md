@@ -1,7 +1,8 @@
 ---
 layout: single
+date: 2026-07-27 22:15:00 +0900
 title: "[CTF] K.knock · D-Alpha · CAUtion 동아리 연합 CTF Write-up"
-categories: Activity
+categories: CTF
 tag: [CTF, Web, AI, Pwn, XXE, SSRF, LLM, Crypto, Writeup, HSPACE]
 toc: true
 toc_label: 목차

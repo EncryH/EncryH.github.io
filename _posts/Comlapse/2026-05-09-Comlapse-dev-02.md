@@ -1,5 +1,6 @@
 ---
 layout: single
+date: 2026-05-09 23:15:00 +0900
 title: "[Comlapse] 개발일지 2 - 세션 DB, 타임랩스, AI 질의 구조 확장"
 categories: Comlapse
 tag: [Comlapse, Electron, SQLite, Timelapse, AI]

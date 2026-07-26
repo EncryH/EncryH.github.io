@@ -6,42 +6,45 @@ sidebar-categories:
   - title: "Security"
     children:
       - title: "Wargame"
-        url: /categories/#wargame
+        url: /categories/wargame/
         category: Wargame
       - title: "Hacking"
-        url: /categories/#hacking
+        url: /categories/hacking/
         category: Hacking
       - title: "Network"
-        url: /categories/#network
+        url: /categories/packet/
         category: 패킷
 
   - title: "Linux"
-    url: /categories/#linux
+    url: /categories/linux/
     category: Linux
 
   - title: "Programming"
     children:
       - title: "C"
-        url: /categories/#c
+        url: /categories/c/
         category: C
       - title: "Data Structure"
-        url: /categories/#data-structure
+        url: /categories/data-structure/
         category: "Data structure"
 
   - title: "Project"
     children:
       - title: "Comlapse"
-        url: /categories/#comlapse
+        url: /categories/comlapse/
         category: Comlapse
 
   - title: "Career"
     children:
       - title: "Portfolio"
-        url: /categories/#portfolio
+        url: /categories/portfolio/
         category: Portfolio
 
   - title: "Activity"
     children:
       - title: "DAH"
-        url: /categories/#activity
+        url: /categories/activity/
         category: Activity
+      - title: "CTF"
+        url: /categories/ctf/
+        category: CTF

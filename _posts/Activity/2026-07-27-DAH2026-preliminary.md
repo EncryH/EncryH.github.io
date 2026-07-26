@@ -1,11 +1,14 @@
 ---
 layout: single
+date: 2026-07-27 23:40:00 +0900
 title: "[DAH 2026] 국방 AI 방산 UAV 도메인 공격·방어 에이전트 설계"
 categories: Activity
 tag: [DAH, Hackathon, UAV, MAVLink, AI Agent, Docker, Python, 방산, 보안]
 toc: true
 toc_label: 목차
 author_profile: false
+header:
+  teaser: "/image/2026-07-27-DAH2026-preliminary/attack-agent-architecture.png"
 ---
 
 # 1. 참여 배경

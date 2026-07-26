@@ -1,5 +1,6 @@
 ---
 layout: single
+date: 2025-09-30 22:20:00 +0900
 title: "[Field Note] Battery Manufacturing CIM Setup Experience"
 categories: Portfolio
 tag: [Portfolio, CIM, MES, PLC, Factory System, Field Experience]

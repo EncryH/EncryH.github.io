@@ -1,11 +1,14 @@
 ---
 layout: single
+date: 2026-05-10 20:40:00 +0900
 title: "[Comlapse] 개발일지 3 - 기록 장치 토글과 대시보드 UX 개선"
 categories: Comlapse
 tag: [Comlapse, React, Electron, UX, Recording]
 toc: true
 toc_label: 목차
 author_profile: false
+header:
+  teaser: "/image/2026-05-10-Comlapse-dev-03/dashboard.png"
 ---
 
 # 1. 기록 장치를 사용자가 고르게 만들기

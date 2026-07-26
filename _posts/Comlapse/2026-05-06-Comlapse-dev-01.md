@@ -1,5 +1,6 @@
 ---
 layout: single
+date: 2026-05-06 21:30:00 +0900
 title: "[Comlapse] 개발일지 1 - Electron 기반 학습 기록 앱 시작"
 categories: Comlapse
 tag: [Comlapse, Electron, React, Vite, Desktop App]

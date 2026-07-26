@@ -1,11 +1,14 @@
 ---
 layout: single
+date: 2025-10-25 15:30:00 +0900
 title: "Ubuntu 기반 Apache + PHP + MariaDB 웹 서버 구축 및 웹 해킹 실습 환경 구성"
 categories: Linux
 tag: [ubuntu, 웹 해킹]
 toc: true
 toc_label: 목차
 author_profile: false
+header:
+  teaser: "/image/2025-10-25-WebServer/웹 브라우저로 실습 서버 IP 접속 여부 확인.png"
 ---
 # Apache + PHP + MariaDB 웹 서버 구축 및 웹 해킹 실습 환경 구성
 

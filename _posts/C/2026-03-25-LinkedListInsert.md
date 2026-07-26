@@ -1,5 +1,6 @@
 ---
 layout: single
+date: 2026-03-25 22:05:00 +0900
 title: "[Data structure] C로 구현한 단순 연결 리스트 삽입"
 categories: C
 tag: [C, Data structure, Linked List]

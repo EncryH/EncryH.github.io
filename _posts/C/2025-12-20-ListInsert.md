@@ -1,5 +1,6 @@
 ---
 layout: single
+date: 2025-12-20 19:30:00 +0900
 title: "[Data structure] 선형 리스트 원소 삽입"
 categories: Data structure
 tag: [C, Data structure]

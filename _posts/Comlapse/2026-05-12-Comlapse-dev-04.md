@@ -1,11 +1,14 @@
 ---
 layout: single
+date: 2026-05-12 22:50:00 +0900
 title: "[Comlapse] 개발일지 4 - 오프라인 음성인식과 PDF/타임랩스 뷰어 확장"
 categories: Comlapse
 tag: [Comlapse, Electron, Vosk, PDF, Timelapse, AI]
 toc: true
 toc_label: 목차
 author_profile: false
+header:
+  teaser: "/image/2026-05-12-Comlapse-dev-04/dashboard-file-tab.png"
 ---
 
 # 1. Web Speech API에서 Vosk로 전환하기

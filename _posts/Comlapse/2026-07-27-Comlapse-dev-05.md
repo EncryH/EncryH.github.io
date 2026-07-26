@@ -1,11 +1,14 @@
 ---
 layout: single
+date: 2026-07-27 19:25:00 +0900
 title: "[Comlapse] 개발일지 5 - 혼자 만든 2개월, 앱이 된 순간들"
 categories: Comlapse
 tag: [Comlapse, Electron, whisper.cpp, AI, React, 포트폴리오, 1인개발]
 toc: true
 toc_label: 목차
 author_profile: false
+header:
+  teaser: "/image/2026-07-27-Comlapse-dev-05/ai-chat.png"
 ---
 
 개발일지 4를 쓴 게 5월 12일이었다. 그로부터 두 달 반이 지났다. 그 사이에 커밋이 86개 쌓였고, Comlapse는 "기능이 돌아가는 프로토타입"에서 "배포를 준비하는 앱"으로 바뀌었다.
