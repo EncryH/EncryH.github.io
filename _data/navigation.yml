@@ -41,3 +41,7 @@ sidebar-categories:
         category: Portfolio
 
   - title: "Activity"
+    children:
+      - title: "DAH"
+        url: /categories/#activity
+        category: Activity

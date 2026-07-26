@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "[DAH 2026] 국방 AI 사이버보안 해커톤 예선 — 방산 UAV 도메인 공격·방어 에이전트 설계"
-categories: Portfolio
+title: "[DAH 2026] 국방 AI 방산 UAV 도메인 공격·방어 에이전트 설계"
+categories: Activity
 tag: [DAH, Hackathon, UAV, MAVLink, AI Agent, Docker, Python, 방산, 보안]
 toc: true
 toc_label: 목차
@@ -20,8 +20,6 @@ Comlapse를 만들면서 Electron이나 LLM API 연동 경험은 생겼는데, �
 | 주최 | LIG Defense & Aerospace |
 | 예선 | 보고서 제출 (2026.06.15 ~ 2026.07.10) |
 | 본선 | 2026.08.21 |
-
-예선은 PDF 보고서 제출이다. 공격 시나리오 설계(30점), 방어 전략(25점), AI 에이전트 아키텍처(25점), 팀 역량(10점), 문서 완성도(10점)으로 총 100점. 시나리오만 써서 내는 게 아니라 Docker 환경에서 실제로 돌아가는 에이전트를 구현하고 실행 증거까지 같이 제출해야 한다.
 
 ![방산 무인체계 운용 환경 개념도 — UAV/UGV, 지상통제, 전술통신망의 연동 구조](/image/2026-07-27-DAH2026-preliminary/defense-uav-concept.png)
 
