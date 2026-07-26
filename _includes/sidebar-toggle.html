@@ -1,0 +1,71 @@
+<!-- Toggle button -->
+<button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="카테고리 메뉴 열기">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Slide sidebar -->
+<nav class="sidebar-drawer" id="sidebarDrawer" aria-label="카테고리 네비게이션">
+  <div class="sidebar-drawer__header">
+    <span class="sidebar-drawer__title">Category</span>
+    <button class="sidebar-drawer__close" id="sidebarClose" aria-label="메뉴 닫기">&times;</button>
+  </div>
+  <ul class="sidebar-drawer__list">
+    {% for nav in site.data.navigation.sidebar-categories %}
+      <li class="sidebar-drawer__group">
+        <span class="sidebar-drawer__group-title">{{ nav.title }}</span>
+        {% if nav.children %}
+          <ul class="sidebar-drawer__sublist">
+            {% for child in nav.children %}
+              {% assign count = 0 %}
+              {% for post in site.posts %}
+                {% if post.categories contains child.category %}
+                  {% assign count = count | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+              <li>
+                <a href="{{ child.url | relative_url }}">
+                  - {{ child.title }}
+                  <span class="sidebar-drawer__count">({{ count }})</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+<script>
+(function() {
+  var toggle = document.getElementById('sidebarToggle');
+  var drawer = document.getElementById('sidebarDrawer');
+  var overlay = document.getElementById('sidebarOverlay');
+  var close = document.getElementById('sidebarClose');
+
+  function open() {
+    drawer.classList.add('is-open');
+    overlay.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function shut() {
+    drawer.classList.remove('is-open');
+    overlay.classList.remove('is-visible');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', open);
+  overlay.addEventListener('click', shut);
+  close.addEventListener('click', shut);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') shut();
+  });
+})();
+</script>

@@ -1,11 +1,51 @@
 # main links
 main: []
-  
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+
+# sidebar category menu
+sidebar-categories:
+  - title: "Security"
+    children:
+      - title: "Wargame"
+        url: /categories/#wargame
+        category: Wargame
+      - title: "Hacking"
+        url: /categories/#hacking
+        category: Hacking
+      - title: "Network"
+        url: /categories/#network
+        category: 패킷
+
+  - title: "Linux"
+    children:
+      - title: "Basics"
+        url: /categories/#linux
+        category: Linux
+      - title: "Server"
+        url: /categories/#linux
+        category: Linux
+      - title: "Lab"
+        url: /categories/#linux
+        category: Linux
+
+  - title: "Programming"
+    children:
+      - title: "C"
+        url: /categories/#c
+        category: C
+      - title: "Data Structure"
+        url: /categories/#data-structure
+        category: "Data structure"
+
+  - title: "Project"
+    children:
+      - title: "Comlapse"
+        url: /categories/#comlapse
+        category: Comlapse
+
+  - title: "Career"
+    children:
+      - title: "Portfolio"
+        url: /categories/#portfolio
+        category: Portfolio
+
+  - title: "Activity"
