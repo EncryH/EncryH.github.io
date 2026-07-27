@@ -2,7 +2,8 @@
 layout: single
 date: 2025-10-25 15:30:00 +0900
 title: "Ubuntu 기반 Apache + PHP + MariaDB 웹 서버 구축 및 웹 해킹 실습 환경 구성"
-categories: Linux
+categories:
+  - "Linux Server"
 tag: [ubuntu, 웹 해킹]
 toc: true
 toc_label: 목차

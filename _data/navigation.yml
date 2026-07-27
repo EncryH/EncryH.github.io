@@ -16,8 +16,13 @@ sidebar-categories:
         category: 패킷
 
   - title: "Linux"
-    url: /categories/linux/
-    category: Linux
+    children:
+      - title: "Basic"
+        url: /categories/linux/
+        category: Linux
+      - title: "Server"
+        url: /categories/linux-server/
+        category: "Linux Server"
 
   - title: "Programming"
     children:
