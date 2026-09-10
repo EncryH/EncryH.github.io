@@ -2,7 +2,7 @@
 layout: single
 date: 2026-08-27 22:20:00 +0900
 title: "[인공지능 기반 상명 AI Training] RAG·Text2SQL 기반 IoT 디바이스 보안 점검 도우미"
-categories: Activity
+categories: AI
 tag: [AI, IoT, Security, RAG, Text2SQL, LangGraph, Streamlit, Qdrant, Supabase]
 toc: true
 toc_label: 목차

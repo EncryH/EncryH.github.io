@@ -2,7 +2,7 @@
 layout: single
 date: 2026-07-31 21:30:00 +0900
 title: "[K-Shield Jr] KISA K-Shield 주니어 기초과정 수료"
-categories: Activity
+categories: K-Shield
 tag: [K-Shield, KISA, 정보보안, 리눅스, 윈도우, 네트워크, 보안교육, 수료]
 toc: true
 toc_label: 목차

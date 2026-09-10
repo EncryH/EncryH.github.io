@@ -39,6 +39,12 @@ sidebar-categories:
         url: /categories/comlapse/
         category: Comlapse
 
+  - title: "AI"
+    children:
+      - title: "AI Training"
+        url: /categories/ai/
+        category: AI
+
   - title: "Career"
     children:
       - title: "Portfolio"
@@ -48,8 +54,11 @@ sidebar-categories:
   - title: "Activity"
     children:
       - title: "DAH"
-        url: /categories/activity/
-        category: Activity
+        url: /categories/dah/
+        category: DAH
+      - title: "K-Shield"
+        url: /categories/k-shield/
+        category: K-Shield
       - title: "CTF"
         url: /categories/ctf/
         category: CTF

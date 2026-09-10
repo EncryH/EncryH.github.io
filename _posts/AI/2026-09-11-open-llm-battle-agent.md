@@ -2,7 +2,7 @@
 layout: single
 date: 2026-09-11 00:30:00 +0900
 title: "[인공지능 기반 상명 AI Training] Groq 기반 다중 모델 비교·평가 Open LLM Battle Agent"
-categories: Activity
+categories: AI
 tag: [AI, LLM, Agent, LangChain, LangGraph, Middleware, Skill, Groq, Security]
 toc: true
 toc_label: 목차
@@ -15,7 +15,7 @@ header:
 
 "인공지능 기반 상명 AI Training"에서 진행한 두 번째 팀 프로젝트로, 이번에는 같은 팀원들과 여러 LLM의 답변을 실제로 비교하고 평가하는 에이전트를 만들었다.
 
-첫 번째 프로젝트에서는 RAG와 Text2SQL을 LangGraph로 묶어 [IoT 디바이스 보안 점검 도우미](/activity/iot-security-helper-agent/)를 만들었는데, 그때는 문서와 DB에서 필요한 정보를 찾아 답변에 넣는 게 중심이었다. 교육 후반부에는 여기서 넘어가 도구를 직접 골라 쓰는 AI Agent를 배웠다.
+첫 번째 프로젝트에서는 RAG와 Text2SQL을 LangGraph로 묶어 [IoT 디바이스 보안 점검 도우미](/ai/iot-security-helper-agent/)를 만들었는데, 그때는 문서와 DB에서 필요한 정보를 찾아 답변에 넣는 게 중심이었다. 교육 후반부에는 여기서 넘어가 도구를 직접 골라 쓰는 AI Agent를 배웠다.
 
 # 2. 교육과정 및 학습 내용
 
