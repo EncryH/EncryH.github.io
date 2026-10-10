@@ -214,20 +214,25 @@ Defender 탐지 여부는 Windows와 Defender 버전, 보안 인텔리전스, �
 
 ## 느낀 점
 
-### 알려진 방법은 대부분 막혀 있었다
+솔직히 시작할 때는 가볍게 봤다. Metasploit을 쓰고 CVE 하나 찾으면 뚫리겠지 싶었다. 그런데 막상 부딪혀 보니 Defender는 생각보다 훨씬 많은 방식을 탐지했고, 인터넷에 공개된 방법들도 대부분 바로 막혔다.
 
-처음엔 "Metasploit 쓰면 되겠지", "CVE 하나 찾으면 뚫리겠지" 싶었는데, 실제로는 대부분 Defender가 이미 알고 있었다. Unified Remote 취약점도 명령 프롬프트까지는 뚫렸지만 파일 다운로드 단계에서 `Trojan:Win32/Ceprolad.A`로 막혔다. **취약점 익스플로잇 성공과 최종 세션 획득은 완전히 다른 문제**라는 걸 그때 알았다.
+C의 Fiber 방식도 해보고 Unified Remote 취약점도 시도했다. Unified Remote는 관리자 명령 프롬프트를 띄우는 것까지는 됐지만, 파일을 내려받는 순간 `Trojan:Win32/Ceprolad.A`로 탐지됐다. 그때 취약점을 통해 명령을 실행하는 것과 Defender를 통과해 최종 셸을 얻는 것은 완전히 다른 문제라는 걸 느꼈다.
 
-### Metasploit 썼다고 다 Meterpreter는 아니었다
+Nim 방식으로 command shell 세션은 획득했지만, 이 세션을 Meterpreter 방식으로 전환하는 데는 성공하지 못했다. 따라서 이번 과제 결과는 Meterpreter가 아닌 command shell 획득으로 정리했다.
 
-세션 열리고 `sessions -l` 쳐보니 타입이 `shell x64/windows`로 떠서 잠깐 멍했다. payload를 `shell_reverse_tcp`로 하면 일반 command shell이 뜬다는 걸 이번에 제대로 알았다. **도구 이름이 아니라 실제 출력을 봐야 한다.**
-
-### 실패한 게 오히려 도움이 됐다
-
-Fiber 방식부터 Unified Remote까지 다 실패했는데, 이 과정에서 "파일 생성 → 전달 → 실행 → 연결 → 세션" 순서로 하나씩 체크하는 습관이 생겼다. **"안 된다"로 끝내지 않고 어느 단계에서 막혔는지 나누는 게** 결국 성공으로 이어졌다.
+보고서를 작성할 때는 Defender 화면에 위협이 없다고 나온 것만 확인했다. 다시 보니 같은 화면에 `0개 파일을 검사했습니다`라고 표시되어 있었다. 다음에는 Defender 설정과 검사 대상, 보호 기록까지 같이 남겨야 결과를 더 정확하게 설명할 수 있을 것 같다.
 
 ---
 
 ## 참고
 
 - **Nim 리버스 셸 소스**: https://github.com/Sn1r/Nim-Reverse-Shell.git
+
+---
+
+## 실습 영상
+
+<video controls playsinline preload="metadata" poster="/image/2026-10-11-windows10-defender-nim-reverse-shell/hero-defender-lab.png" style="width: 100%; height: auto;">
+  <source src="/video/2026-10-11-windows10-defender-nim-reverse-shell/windows10-defender-lab.m4v" type="video/mp4">
+  브라우저가 영상 재생을 지원하지 않습니다.
+</video>
