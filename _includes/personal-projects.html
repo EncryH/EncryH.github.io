@@ -1,0 +1,13 @@
+<div class="personal-project-grid">
+  {% for project in site.data.featured-projects %}
+  {% assign project_post = site.posts | where: 'path', project.post_path | first %}
+  {% if project_post %}
+  <a class="personal-project" href="{{ project_post.url | relative_url }}">
+    <div class="personal-project-image"><img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }} 프로젝트 화면" width="720" height="450" loading="lazy"></div>
+    <span class="personal-project-meta">{{ project.category }}</span>
+    <h3>{{ project.title }} <span aria-hidden="true">↗</span></h3>
+    <p>{{ project.description }}</p>
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>

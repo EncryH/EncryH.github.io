@@ -1,8 +1,9 @@
 ---
-title: "Hacking"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/hacking/
-taxonomy: Hacking
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=Hacking
+canonical_url: https://EncryH.github.io/blog/?category=Hacking
+link_label: All Posts
+sitemap: false
 ---

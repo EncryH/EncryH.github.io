@@ -1,36 +1,24 @@
 ---
-layout: archive
+layout: default
 ---
-
-{{ content }}
-
-{% assign total_posts = site.posts | size %}
-{% assign recent_posts_label = site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" %}
-<h3 class="archive__subtitle" data-home-posts-title data-default-title="전체 글 ({{ total_posts }})">전체 글 ({{ total_posts }})</h3>
-
-{% if page.home_category_sidebar %}
-  {% include home-category-sidebar.html %}
-{% endif %}
-
-{% if page.home_category_sidebar %}
-  {% assign posts = site.posts %}
-{% elsif paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}" data-home-posts data-default-limit="{{ site.paginate | default: 5 }}">
-  {% include documents-collection.html entries=posts type=entries_layout %}
-</div>
-
-{% if page.home_category_sidebar %}
-  <p class="home-category-empty" data-home-category-empty hidden>선택한 카테고리의 글이 없습니다.</p>
-  <nav class="pagination" data-home-pagination aria-label="Pagination"></nav>
-  {% include home-category-filter.html %}
-{% endif %}
-
-{% unless page.home_category_sidebar %}
-  {% include paginator.html %}
-{% endunless %}
+<main id="main" class="personal-main">
+  {% if paginator.page > 1 %}
+    <header class="personal-page-heading"><a class="back-link" href="{{ '/blog/' | relative_url }}">All Posts</a><h1>글 보관함</h1><p>{{ paginator.page }} / {{ paginator.total_pages }} 페이지</p></header>
+    {% include personal-post-list.html posts=paginator.posts %}
+    {% include paginator.html %}
+  {% else %}
+    <section class="personal-intro" aria-labelledby="intro-title">
+      <h1 id="intro-title">AI와 보안을 공부하고,<br>직접 서비스를 만듭니다.</h1>
+      <div class="personal-intro-copy"><p>만들면서 마주친 문제와 해결 과정,<br>실습으로 배운 내용을 기록합니다.</p></div>
+    </section>
+    <section class="personal-section" aria-labelledby="projects-title">
+      <div class="personal-section-heading"><h2 id="projects-title">Projects</h2><a href="{{ '/projects/' | relative_url }}">All Projects <span aria-hidden="true">↗</span></a></div>
+      {% include personal-projects.html %}
+    </section>
+    <section class="personal-section" aria-labelledby="posts-title">
+      <div class="personal-section-heading"><h2 id="posts-title">Latest Posts</h2><a href="{{ '/blog/' | relative_url }}">All Posts <span aria-hidden="true">↗</span></a></div>
+      {% assign latest_posts = site.posts | slice: 0, 5 %}
+      {% include personal-post-list.html posts=latest_posts %}
+    </section>
+  {% endif %}
+</main>

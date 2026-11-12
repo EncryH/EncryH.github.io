@@ -25,6 +25,7 @@ layout: default
     {%- assign search_provider = site.search_provider | default: "lunr" -%}
     {%- case search_provider -%}
       {%- when "lunr" -%}
+        <label class="sr-only" for="search">글 본문 검색</label>
         <input type="text" id="search" class="search-input" placeholder="{{ site.data.ui-text[site.locale].search_placeholder_text | default: 'Enter your search term...' }}" />
         <div id="results" class="results"></div>
       {%- when "google" -%}

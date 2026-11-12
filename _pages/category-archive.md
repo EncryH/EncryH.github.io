@@ -1,7 +1,10 @@
 ---
-title: "Category"
-layout: categories
+layout: redirect
+title: Blog
 permalink: /categories/
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/
+canonical_url: https://EncryH.github.io/blog/
+link_label: All Posts
+sitemap: false
+redirect_categories: true
 ---

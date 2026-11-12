@@ -1,8 +1,9 @@
 ---
-title: "Comlapse"
-layout: category-single
+title: Blog
+layout: redirect
 permalink: /categories/comlapse/
-taxonomy: Comlapse
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/
+canonical_url: https://EncryH.github.io/blog/
+link_label: All Posts
+sitemap: false
 ---

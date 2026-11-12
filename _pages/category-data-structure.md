@@ -1,8 +1,9 @@
 ---
-title: "Data Structure"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/data-structure/
-taxonomy: "Data structure"
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=Data%20structure
+canonical_url: https://EncryH.github.io/blog/?category=Data%20structure
+link_label: All Posts
+sitemap: false
 ---

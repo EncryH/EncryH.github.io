@@ -13,7 +13,7 @@ header:
 
 # 1. 참여 배경
 
-Comlapse를 만들면서 Electron이나 LLM API 연동 경험은 생겼는데, 보안 도메인에서 AI를 직접 굴려본 적은 없었다. 그러던 중 같은 과 동기가 DAH 2026(Defense AI Cyber Security Hackathon) 대회를 알려줬다. LIG Defense & Aerospace 주최, 방산 도메인에서 UAV/UGV 공격·방어 AI 에이전트를 설계하고 구현하는 대회. 설명 듣자마자 해야겠다 싶어서 바로 합류했고, 팀을 꾸렸다.
+같은 과 동기가 DAH 2026(Defense AI Cyber Security Hackathon) 대회를 알려줬다. LIG Defense & Aerospace 주최, 방산 도메인에서 UAV/UGV 공격·방어 AI 에이전트를 설계하고 구현하는 대회. 설명 듣자마자 해야겠다 싶어서 바로 합류했고, 팀을 꾸렸다.
 
 | 항목 | 내용 |
 |------|------|
@@ -243,7 +243,7 @@ python -m attack_agent.kill_chain --stage all --objective FAILSAFE_INDUCTION --e
 
 `EW_STEALTH_DEGRADATION_SIM`(점진적 링크 저하)을 만들 때 느낀 건데, 기존 방어 에이전트의 threshold 기반 탐지가 이 공격을 놓칠 수 있다는 걸 직접 확인했다. 그래서 방어 로직에 추세 기반 탐지를 추가하게 됐다. 공격하는 쪽에서 시도해봐야 방어에서 뭘 놓치는지가 보인다.
 
-Comlapse에서는 AI를 사용자 도구로 썼고, DAH에서는 AI를 공격/방어 자동화 에이전트로 썼다. 같은 AI인데 도메인에 따라 완전히 다른 형태가 된다. 이번 대회 덕에 "정보보안 전공 위에 AI 서비스 개발"이라는 방향이 말로만 하는 게 아니라 실제 결과물로 붙기 시작했다.
+DAH에서는 AI를 공격/방어 자동화 에이전트로 썼다. 이번 대회 덕에 "정보보안 전공 위에 AI 서비스 개발"이라는 방향이 말로만 하는 게 아니라 실제 결과물로 붙기 시작했다.
 
 # 10. 다음
 

@@ -1,5 +1,6 @@
 ---
 layout: single
+published: false
 date: 2026-05-10 20:40:00 +0900
 title: "[Comlapse] 개발일지 3 - 기록 장치 토글과 대시보드 UX 개선"
 categories: Comlapse

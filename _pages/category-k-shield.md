@@ -1,8 +1,9 @@
 ---
-title: "K-Shield"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/k-shield/
-taxonomy: K-Shield
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=K-Shield
+canonical_url: https://EncryH.github.io/blog/?category=K-Shield
+link_label: All Posts
+sitemap: false
 ---

@@ -1,8 +1,9 @@
 ---
-title: "Activity"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/activity/
-taxonomy: Activity
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/
+canonical_url: https://EncryH.github.io/blog/
+link_label: All Posts
+sitemap: false
 ---

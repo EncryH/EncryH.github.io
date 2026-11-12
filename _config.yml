@@ -236,7 +236,7 @@ timezone: Asia/Seoul
 
 
 # Pagination with jekyll-paginate
-paginate: 5 # amount of posts to show
+paginate: null # Blog handles pagination; keep legacy archive URLs as redirects.
 paginate_path: /page:num/
 
 # Pagination with jekyll-paginate-v2

@@ -1,7 +1,9 @@
 ---
-title: "연도별"
+layout: redirect
+title: Blog
 permalink: /year-archive-grid/
-layout: posts
-entries_layout: grid
-author_profile: true
+redirect_to: /blog/
+canonical_url: https://EncryH.github.io/blog/
+link_label: All Posts
+sitemap: false
 ---

@@ -1,8 +1,9 @@
 ---
-title: "Portfolio"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/portfolio/
-taxonomy: Portfolio
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=Portfolio
+canonical_url: https://EncryH.github.io/blog/?category=Portfolio
+link_label: All Posts
+sitemap: false
 ---

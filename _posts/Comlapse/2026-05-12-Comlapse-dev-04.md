@@ -1,5 +1,6 @@
 ---
 layout: single
+published: false
 date: 2026-05-12 22:50:00 +0900
 title: "[Comlapse] 개발일지 4 - 오프라인 음성인식과 PDF/타임랩스 뷰어 확장"
 categories: Comlapse

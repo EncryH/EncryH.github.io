@@ -1,5 +1,6 @@
 ---
 layout: single
+published: false
 date: 2026-07-27 19:25:00 +0900
 title: "[Comlapse] 개발일지 5 - 혼자 만든 2개월, 앱이 된 순간들"
 categories: Comlapse

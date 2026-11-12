@@ -1,0 +1,13 @@
+<div class="personal-post-list">
+  {% for post in include.posts %}
+  <article class="personal-post-row{% if post.header.teaser %} personal-post-row--with-image{% endif %}" data-post-row data-category="{{ post.categories | join: '|' | escape }}" data-search="{{ post.title | append: ' ' | append: post.categories | append: ' ' | append: post.tags | append: ' ' | append: post.tag | append: ' ' | append: post.excerpt | strip_html | normalize_whitespace | escape }}">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+    {% if post.header.teaser %}
+    <a class="personal-post-thumbnail" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }}">
+      <img src="{{ post.header.teaser | relative_url }}" alt="" width="104" height="68" loading="lazy">
+    </a>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>

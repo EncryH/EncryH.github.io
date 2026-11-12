@@ -1,8 +1,9 @@
 ---
-title: "패킷"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/packet/
-taxonomy: 패킷
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=%ED%8C%A8%ED%82%B7
+canonical_url: https://EncryH.github.io/blog/?category=%ED%8C%A8%ED%82%B7
+link_label: All Posts
+sitemap: false
 ---

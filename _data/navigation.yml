@@ -6,59 +6,53 @@ sidebar-categories:
   - title: "Security"
     children:
       - title: "Wargame"
-        url: /categories/wargame/
+        url: /blog/?category=Wargame
         category: Wargame
       - title: "Hacking"
-        url: /categories/hacking/
+        url: /blog/?category=Hacking
         category: Hacking
       - title: "Network"
-        url: /categories/packet/
+        url: /blog/?category=%ED%8C%A8%ED%82%B7
         category: 패킷
 
   - title: "Linux"
     children:
       - title: "Basic"
-        url: /categories/linux/
+        url: /blog/?category=Linux
         category: Linux
       - title: "Server"
-        url: /categories/linux-server/
+        url: /blog/?category=Linux%20Server
         category: "Linux Server"
 
   - title: "Programming"
     children:
       - title: "C"
-        url: /categories/c/
+        url: /blog/?category=C
         category: C
       - title: "Data Structure"
-        url: /categories/data-structure/
+        url: /blog/?category=Data%20structure
         category: "Data structure"
-
-  - title: "Project"
-    children:
-      - title: "Comlapse"
-        url: /categories/comlapse/
-        category: Comlapse
 
   - title: "AI"
     children:
       - title: "AI Training"
-        url: /categories/ai/
+        url: /blog/?category=AI
         category: AI
 
   - title: "Career"
     children:
       - title: "Portfolio"
-        url: /categories/portfolio/
+        url: /blog/?category=Portfolio
         category: Portfolio
 
   - title: "Activity"
     children:
       - title: "DAH"
-        url: /categories/dah/
+        url: /blog/?category=DAH
         category: DAH
       - title: "K-Shield"
-        url: /categories/k-shield/
+        url: /blog/?category=K-Shield
         category: K-Shield
       - title: "CTF"
-        url: /categories/ctf/
+        url: /blog/?category=CTF
         category: CTF

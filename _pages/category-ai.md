@@ -1,8 +1,9 @@
 ---
-title: "AI"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/ai/
-taxonomy: AI
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=AI
+canonical_url: https://EncryH.github.io/blog/?category=AI
+link_label: All Posts
+sitemap: false
 ---

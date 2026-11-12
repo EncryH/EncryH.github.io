@@ -1,8 +1,9 @@
 ---
-title: "Linux Server"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/linux-server/
-taxonomy: "Linux Server"
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=Linux%20Server
+canonical_url: https://EncryH.github.io/blog/?category=Linux%20Server
+link_label: All Posts
+sitemap: false
 ---

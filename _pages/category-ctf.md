@@ -1,8 +1,9 @@
 ---
-title: "CTF"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/ctf/
-taxonomy: CTF
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=CTF
+canonical_url: https://EncryH.github.io/blog/?category=CTF
+link_label: All Posts
+sitemap: false
 ---

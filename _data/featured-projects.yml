@@ -1,0 +1,10 @@
+- title: Open LLM Battle Agent
+  description: 같은 질문에 대한 여러 모델의 답변을 비교·평가하는 에이전트
+  category: LLM · Evaluation
+  post_path: _posts/AI/2026-09-11-open-llm-battle-agent.md
+  image: /image/2026-09-11-open-llm-battle-agent/langgraph-studio.png
+- title: IoT 보안 점검 도우미
+  description: RAG와 Text2SQL로 일상의 IoT 보안 질문에 답하는 도우미
+  category: RAG · Security
+  post_path: _posts/AI/2026-08-27-iot-security-helper-agent.md
+  image: /image/2026-08-27-iot-security-helper/home-screen.png

@@ -1,8 +1,9 @@
 ---
-title: "DAH"
-layout: category-single
+layout: redirect
+title: Blog
 permalink: /categories/dah/
-taxonomy: DAH
-author_profile: true
-sidebar_main: true
+redirect_to: /blog/?category=DAH
+canonical_url: https://EncryH.github.io/blog/?category=DAH
+link_label: All Posts
+sitemap: false
 ---
